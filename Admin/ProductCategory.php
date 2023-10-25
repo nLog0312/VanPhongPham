@@ -1,0 +1,172 @@
+<?php include_once './ShareAdmin/header.php'; ?>
+
+<div class="toast-container position-fixed p-3" style="top: 80px; right: 50px;">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <?php
+                    if (isset($_SESSION['toast-success'])) {
+                        echo '<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" xml:space="preserve" width="24px" height="24px" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle style="fill:#25AE88;" cx="25" cy="25" r="25"></circle> <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" points=" 38,15 22,33 12,25 "></polyline> </g></svg>';
+                        echo '<strong class="ms-2 me-auto">Thông báo</strong>';
+                    }
+                    if (isset($_SESSION['toast-error'])) {
+                        echo '<svg fill="#ff0000" width="24px" height="24px" viewBox="0 -8 528 528" xmlns="http://www.w3.org/2000/svg" stroke="#ff0000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title>fail</title><path d="M264 456Q210 456 164 429 118 402 91 356 64 310 64 256 64 202 91 156 118 110 164 83 210 56 264 56 318 56 364 83 410 110 437 156 464 202 464 256 464 310 437 356 410 402 364 429 318 456 264 456ZM264 288L328 352 360 320 296 256 360 192 328 160 264 224 200 160 168 192 232 256 168 320 200 352 264 288Z"></path></g></svg>';
+                        echo '<strong class="ms-2 me-auto">Lỗi</strong>';
+                    }
+                ?>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                <?php
+                    if (isset($_SESSION['toast-success'])) {
+                        echo $_SESSION['toast-success'];
+                        unset($_SESSION['toast-success']);
+                        echo '<script>
+                                var toastLive = document.getElementById("liveToast")
+                                var toast = new bootstrap.Toast(toastLive)
+                                toast.show()
+                            </script>';
+                    }
+                    if (isset($_SESSION['toast-error'])) {
+                        echo $_SESSION['toast-error'];
+                        unset($_SESSION['toast-error']);
+                        echo '<script>
+                                var toastLive = document.getElementById("liveToast")
+                                var toast = new bootstrap.Toast(toastLive)
+                                toast.show()
+                            </script>';
+                    }
+                ?>
+            </div>
+        </div>
+    </div>
+<section>
+    <div class="row mb-3">
+        <div class="col-3">
+            <button type="button" class="btn btn-secondary"  data-bs-toggle="modal" data-bs-target="#addModal">Thêm mới</button>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center" style="width: 3%;"></th>
+                    <th class="text-center" style="width: 5%;">STT</th>
+                    <th class="text-center" style="width: 10%;">Ảnh</th>
+                    <th class="text-center" style="width: 20%;">Mã Sản Phẩm</th>
+                    <th class="text-center">Tên Sản Phẩm</th>
+                    <th class="text-center" style="width: 20%;">Giá Bán</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    include_once './Product/ShowProduct.php';
+                ?>
+        </table>
+    </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-fullscreen">
+        <form action="process_insert.php" method="post" class="form-add" style="height: 100%; width: 100%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-2" id="addleModalLabel">Thêm mới sản phẩm</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body" style="overflow-x: hidden;">
+                    <label class="fs-5 form-label required" for="nameProduct">1. Nhập tên sản phẩm: </label>
+                    <br>
+                    <input id="nameProduct" name="name_product" class="form-control form-control-lg" type="text" placeholder="Tên sản phẩm..." aria-label=".form-control-lg" required>
+                    <div class="invalid name_product"></div>
+                    <br>
+
+                    <label class="fs-5 form-label" for="imgProduct">2. Nhập ảnh sản phẩm ( Nhập link, mỗi link cách nhau bằng dấu ',' ): </label>
+                    <br>
+                    <input id="imgProduct" name="img_product" class="form-control form-control-lg" type="text" placeholder="Ảnh..." aria-label=".form-control-lg">
+                    <br>
+                    <div class="image-product">
+                        <div class="row row-cols-4 overflow-auto" style="max-width: 35%; max-height: 20rem;">
+                            <div class="col">
+                                <img style="max-width: 8rem;" src="https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745" class="img-thumbnail" alt="...">
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+                    <label class="fs-5 form-label required" for="priceProduct">3. Nhập giá bán sản phẩm: </label>
+                    <br>
+                    <input id="priceProduct" name="price_product" class="form-control form-control-lg" type="number" placeholder="Giá bán..." aria-label=".form-control-lg" required>
+                    <div class="invalid price_product"></div>
+                    <br>
+
+                    <div class="dropdown">
+                        <button class="btn btn-success dropdown-toggle"
+                            type="button"
+                            id="multiSelectDropdown"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Lựa chọn
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="multiSelectDropdown">
+                            
+                            <label>
+                                Màu sắc
+                            </label>
+                            <li>
+                                <label>
+                                    <input type="checkbox" value="Java"> Xanh
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" value="C++">
+                                    C++
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" value="Python">
+                                    Python
+                                </label>
+                            </li>
+                            <label>
+                                Màu sắc
+                            </label>
+                            <li>
+                                <label>
+                                    <input type="checkbox" value="Java"> Xanh
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" value="C++">
+                                    C++
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" value="Python">
+                                    Python
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                    <br>
+
+                    <div class="form-floating">
+                        <textarea name="desc_product" class="form-control" placeholder="Mô tả sản phẩm..." id="descProduct" style="height: 100px"></textarea>
+                        <label for="descProduct">Mô tả sản phẩm</label>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<?php include_once './ShareAdmin/footer.php'; ?>
