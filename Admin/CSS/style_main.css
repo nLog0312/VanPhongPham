@@ -51,7 +51,7 @@ button {
     -webkit-appearance: none;
 } */
 
-[type="checkbox"] {
+.switch [type="checkbox"] {
     position: absolute;
     left: -9999px;
 }
@@ -243,7 +243,6 @@ body {
     font-size: 1.5rem;
     padding-left: 15px;
     background: var(--page-content-blockColor);
-    color: var(--white);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
 }
@@ -261,7 +260,7 @@ body {
 .search-and-user form button {
     position: absolute;
     top: 50%;
-    right: 15px;
+    right: -35px;
     transform: translateY(-50%);
 }
 
@@ -569,6 +568,9 @@ body {
 
 /* FOOTER
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+#addModal button {
+    color: var(--white) !important;
+}
 .page-footer {
     font-size: 1rem;
     display: flex;
@@ -579,4 +581,18 @@ body {
 
 .page-footer a {
     margin-left: 4px;
+}
+
+/* Custom */
+.required:after {
+    content: " (*)";
+    color: red;
+}
+
+.invalid {
+    width: 100%;
+    margin-top: 0.25rem;
+    margin-left: 0.5rem;
+    font-size: 1.1em;
+    color: var(--bs-form-invalid-color);
 }
