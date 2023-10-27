@@ -1,0 +1,200 @@
+body {
+    font-family: 'Helvetica'
+}
+._header1{
+    background-color: #cc0621;
+    height: 35px;
+    align-items: center;
+    justify-content: center;
+}
+._header2{
+    background-color: #cc0621;
+    height: 80px;
+    width: 100%;
+}
+.sticky-top {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+._head{
+    margin-left: 50px;
+}
+._header-search{
+    box-sizing: border-box;
+}
+._container-header{
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+    width: 1200px;
+    padding: 3px;
+}
+._container-hotline{
+    position: relative;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+    width: 1200px;
+    padding: 3px;
+}
+.information{
+    width: 500px;
+}
+.in-thanh-sp{
+    width: 100%;
+}
+.thanh_sp_header{
+    grid-template-columns: 790px 80px;
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    height: 40px;
+    width: 870px;
+    background-color: #fff;
+    border-radius: 3px;
+}
+.link_sp_header{
+    margin-left: auto;
+    margin-right: auto;
+    height: 25px;
+    width: 870px;
+}
+.v-center{
+    display: flex;
+    align-items: center;
+}
+.size-hotline{
+    font-size: 13px;
+}
+.size-sign{
+    font-size: 13px;
+    text-align: right;
+
+}
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    width: 1200px;
+}
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container-fluid{
+    display: flex;
+    flex-wrap: inherit;
+    margin-right: auto;
+    margin-left: auto;
+    align-items: center;
+    width: 1200px;
+    height: 80px;;
+}
+._container-center{
+    width: 1200px;
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+}
+._container-sign{
+
+    text-align: right;
+}
+._search-form{
+    width: 850px;
+    height: 39px;
+    background-color: #fff;
+    border-radius: 3px;
+}
+._search-img{
+    position: relative;
+}
+.input-search {
+    margin-left: 10px;
+    border-radius: 3px;
+    border: 0;
+    width: 98%;
+    height: 33px;
+    outline: none;
+}
+.khung-button{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+.button-search{
+    cursor: pointer;
+    border: 3px;
+    width: 75px;
+    height: 35px;
+    background-color: #cc0621;
+    border-radius: 3px;
+}
+button:hover {
+    background-color: #e61531;
+}
+.text-color-white{
+    text-decoration: none;
+    color: white;
+}
+.text-color-white-ha{
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
+.linked{
+    margin-left: 6px;
+}
+.hover:hover{
+    color: #e3e1e1;
+}
+.text-color-white-ga{
+    text-decoration: none;
+    color: white;
+    opacity: 50%;
+}
+._gioHang{
+   font-size: 25px;
+}
+._btn-gioHang{
+    display: flex;
+    width: 100px;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+.navbar__spacer {
+     flex: 1;
+ }
+.navbar__sign {
+    list-style: none;
+    padding-top: 5px;
+    margin: 0;
+    height: 2.125rem;
+}
+._span-space{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+._search-text{
+    color: #fff;
+    font-size: 11px;
+    line-height: 1.7rem;
+    margin-right: 20px;
+    text-decoration: none;
+}
+._taskbar-items{
+    width: 50px;
+}
+.logo {
+    width: 170px;
+    height: 45px;
+    padding: 5px;
+    align-items: center;
+}
+
+
+
