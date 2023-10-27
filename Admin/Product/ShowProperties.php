@@ -14,13 +14,21 @@
         }
         foreach ($lstthuoctinhcha as $index => $each) {
             $index += 1;
+            $thuoctinhcon = '';
+            foreach ($result as $index => $eachLst) {
+                if ($eachLst['ten_thuoctinhcha'] == $each['ma_thuoctinh']){
+                    $thuoctinhcon .= $eachLst['ten_thuoctinhcon'] . ', ';
+                }
+            }
+
+            $thuoctinhcon = substr($thuoctinhcon, 0, -2);
 
             echo "<tr>";
                 echo "<td class='text-center' style='width: 5%'>
                         <span>$index</span>
                 </td>";
                 echo "<td style='width: 20%'>" . ($each['ma_thuoctinh']) . "</td>";
-                echo "<td>" . ($each['ten_thuoctinhcha']) . "</td>";
+                echo "<td>" . ($each['ten_thuoctinhcha']) . ': ' . ($thuoctinhcon)  . "</td>";
                 echo "<td class='text-center'>
                     <div class='dropdown'>
                         <a class='btn dropdown-toggle' href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
