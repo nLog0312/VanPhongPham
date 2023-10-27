@@ -14,3 +14,45 @@ inputAddForm.forEach(input => {
         }
     })
 })
+
+const chBoxes = document.querySelectorAll('.dropdown-menu input[type="checkbox"]'); 
+const dpBtn = document.getElementById('multiSelectDropdown'); 
+let mySelectedListItems = []; 
+
+function handleCB() { 
+    mySelectedListItems = []; 
+    let mySelectedListItemsText = ''; 
+
+    chBoxes.forEach((checkbox) => { 
+        if (checkbox.checked) { 
+            mySelectedListItems.push(checkbox.value); 
+            mySelectedListItemsText += checkbox.value + ', '; 
+        } 
+    });
+
+    dpBtn.innerText = mySelectedListItems.length > 0 && mySelectedListItems.length <= 3 ? mySelectedListItemsText.slice(0, -2) : 'Lựa chọn';
+    if (mySelectedListItems.length > 3) 
+        dpBtn.innerText = mySelectedListItems.length.toString() + ' thuộc tính';
+}
+
+chBoxes.forEach((checkbox) => { 
+    checkbox.addEventListener('change', handleCB); 
+});
+
+// onchange input image
+const inputImage = document.getElementById('imgProduct');
+const imgPreview = document.querySelector('.image-product .row');
+
+inputImage.addEventListener('input', function() {
+    let imgInput = this.value.replace(' ', '');
+    imgPreview.innerHTML = '';
+    if (imgInput.includes(',')){
+        const lstImg = imgInput.split(',');
+        lstImg.forEach(img => {
+            if (img != '')
+                imgPreview.innerHTML += `<div class="col"><img style="max-width: 8rem;" src="${img}" alt="image" class="img-thumbnail"></div>`;
+        })
+    } else {
+        imgPreview.innerHTML = `<div class="col"><img style="max-width: 8rem;" src="${imgInput}" alt="image" class="img-thumbnail"></div>`;
+    }
+})
