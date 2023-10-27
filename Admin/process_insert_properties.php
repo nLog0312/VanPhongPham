@@ -4,7 +4,9 @@
 
     $name_parent_properties = $_POST['name_parent_properties'];
     $name_child_properties = $_POST['name_child_properties'];
-    $name_child_properties = str_replace(' ', '', $name_child_properties); // remove space
+    $name_child_properties = str_replace(', ', ',', $name_child_properties); // remove space
+    $name_child_properties = str_replace(' ,', ',', $name_child_properties); // remove space
+    $name_child_properties = str_replace(' , ', ',', $name_child_properties); // remove space
     // remove coma at the end of string
     if (substr($name_child_properties, -1) == ',') {
         $name_child_properties = substr($name_child_properties, 0, -1);

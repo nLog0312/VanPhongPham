@@ -127,20 +127,31 @@
                                         $stringSQL = "SELECT * FROM `thuoctinh`";
                                         $result = mysqli_query($connect, $stringSQL);
                                         if (mysqli_num_rows($result) > 0) {
+                                            // get parent properties
+                                            $lstthuoctinhcha = array();
                                             foreach ($result as $index => $each) {
+                                                if ($each['ten_thuoctinhcon'] == null){
+                                                    array_push($lstthuoctinhcha, $each);
+                                                }
+                                            }
+                                            foreach ($lstthuoctinhcha as $index => $each) {
                                                 echo "
                                                     <label class='ms-2'>
-                                                        " . $each['ten_thuoctinhcha'] . "
+                                                        " . $index + 1 . '. ' . $each['ten_thuoctinhcha'] . "
                                                     </label>";
-                                                $lstChild = explode(',', $each['ten_thuoctinhcon']);
-                                                foreach ($lstChild as $index => $eachChild) {
-                                                    echo "
+                                                // get child properties
+                                                foreach ($result as $eachChild) {
+                                                    if ($eachChild['ten_thuoctinhcha'] == $each['ma_thuoctinh']){
+                                                        echo "
                                                         <li class='ms-4'>
                                                             <label>
-                                                                <input type='checkbox' name='properties[]' value='" . $each['ma_thuoctinh'] . "'>
-                                                                " . $eachChild . "
+                                                                <input type='checkbox' name='properties[]' value='" . $eachChild['ma_thuoctinh'] . "'>
+                                                                <span class='ms-2'>
+                                                                    " . $eachChild['ten_thuoctinhcon'] . "
+                                                                </span>
                                                             </label>
                                                         </li>";
+                                                    }
                                                 }
                                             }
                                         } else {

@@ -28,8 +28,8 @@ function handleCB() {
 
     chBoxes.forEach((checkbox) => { 
         if (checkbox.checked) { 
-            mySelectedListItems.push(checkbox.value); 
-            mySelectedListItemsText += checkbox.value + ', '; 
+            mySelectedListItems.push(checkbox.parentElement.querySelector('span').innerText); 
+            mySelectedListItemsText += checkbox.parentElement.querySelector('span').innerText + ', '; 
         } 
     });
 
@@ -47,7 +47,7 @@ chBoxes.forEach((checkbox) => {
 const inputImage = document.getElementById('imgProduct');
 const imgPreview = document.querySelector('.image-product .row');
 
-inputImage.addEventListener('input', function() {
+inputImage?.addEventListener('input', function() {
     let imgInput = this.value.replace(' ', '');
     imgPreview.innerHTML = '';
     if (imgInput.includes(',')){

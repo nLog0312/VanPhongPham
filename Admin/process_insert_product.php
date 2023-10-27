@@ -4,7 +4,9 @@
 
     $name_product = $_POST['name_product'];
     $img_product = $_POST['img_product'];
-    $img_product = str_replace(' ', '', $img_product); // remove space
+    $img_product = str_replace(', ', ',', $img_product); // remove space
+    $img_product = str_replace(' ,', ',', $img_product); // remove space
+    $img_product = str_replace(' , ', ',', $img_product); // remove space
     if (str_contains($img_product, ',')) {
         $one_img_product = substr($img_product, 0, strpos($img_product, ','));
     }
