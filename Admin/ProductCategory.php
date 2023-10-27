@@ -56,7 +56,6 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th class="text-center" style="width: 3%;"></th>
                     <th class="text-center" style="width: 5%;">STT</th>
                     <th class="text-center" style="width: 10%;">Ảnh</th>
                     <th class="text-center" style="width: 20%;">Mã Sản Phẩm</th>

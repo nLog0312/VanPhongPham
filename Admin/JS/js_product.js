@@ -1,5 +1,6 @@
 const inputAddForm = document.querySelectorAll('#addModal form input[required]');
 
+//#region validate input
 inputAddForm.forEach(input => {
     input.addEventListener('blur', function() {
         let value = this.value;
@@ -14,7 +15,9 @@ inputAddForm.forEach(input => {
         }
     })
 })
+//#endregion
 
+//#region handle product properties
 const chBoxes = document.querySelectorAll('.dropdown-menu input[type="checkbox"]'); 
 const dpBtn = document.getElementById('multiSelectDropdown'); 
 let mySelectedListItems = []; 
@@ -38,8 +41,9 @@ function handleCB() {
 chBoxes.forEach((checkbox) => { 
     checkbox.addEventListener('change', handleCB); 
 });
+//#endregion
 
-// onchange input image
+//#region onchange input image
 const inputImage = document.getElementById('imgProduct');
 const imgPreview = document.querySelector('.image-product .row');
 
@@ -56,3 +60,4 @@ inputImage.addEventListener('input', function() {
         imgPreview.innerHTML = `<div class="col"><img style="max-width: 8rem;" src="${imgInput}" alt="image" class="img-thumbnail"></div>`;
     }
 })
+//#endregion
