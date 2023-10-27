@@ -6,13 +6,16 @@
     $result = mysqli_query($connect, $stringSQL);
 
     if (mysqli_num_rows($result) > 0) {
+        $lstthuoctinhcha = array();
         foreach ($result as $index => $each) {
+            if ($each['ten_thuoctinhcon'] == null){
+                array_push($lstthuoctinhcha, $each);
+            }
+        }
+        foreach ($lstthuoctinhcha as $index => $each) {
             $index += 1;
 
             echo "<tr>";
-                echo "<td class='text-center' style='width: 3%;'>
-                        <ion-icon name='add-circle-outline'></ion-icon>
-                </td>";
                 echo "<td class='text-center' style='width: 5%'>
                         <span>$index</span>
                 </td>";

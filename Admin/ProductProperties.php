@@ -56,7 +56,6 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th class="text-center" style="width: 3%;"></th>
                     <th class="text-center" style="width: 5%;">STT</th>
                     <th class="text-center" style="width: 20%;">Mã Thuộc Tính</th>
                     <th class="text-center">Tên Thuộc Tính</th>
