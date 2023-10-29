@@ -3,7 +3,7 @@
     require_once './ShareAdmin/root/connect.php';
     $linkParent = $_POST['linkParent'];
 
-    $id_product = $_GET['id'];
+    $id = $_GET['id'];
     $image_product = $_POST['img_product'];
     $image_product = str_replace(', ', ',', $image_product); // remove space
     $image_product = str_replace(' ,', ',', $image_product); // remove space
@@ -35,12 +35,16 @@
         $one_img_product = $target_file;
     }
     // insert chitiet_sanpham
-    $stringSQL = "INSERT INTO `chitiet_sanpham`(`ma_sanpham`, `anhs_sanpham`, `ma_thuoctinh`, `soluong`) VALUES ('$id_product','$one_img_product','$property','$quantity')";
+    if ($one_img_product == "") {
+        $stringSQL = "UPDATE `chitiet_sanpham` SET `ma_thuoctinh`='$property',`soluong`='$quantity' WHERE `id` = '$id'";
+    } else {
+        $stringSQL = "UPDATE `chitiet_sanpham` SET `anhs_sanpham`='$one_img_product',`ma_thuoctinh`='$property',`soluong`='$quantity' WHERE `id` = '$id'";
+    }
     $result = mysqli_query($connect, $stringSQL);
 
     if ($result) {
-        $_SESSION['toast-success'] = "Thêm thành công";
+        $_SESSION['toast-success'] = "Sửa thành công";
     } else {
-        $_SESSION['toast-error'] = "Thêm thất bại";
+        $_SESSION['toast-error'] = "Sửa thất bại";
     }
     header("Location: " . $linkParent);
