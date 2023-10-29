@@ -77,7 +77,7 @@
 <!-- Modal Add -->
 <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-fullscreen">
-        <form action="process_insert_product.php" method="post" class="form-add" style="height: 100%; width: 100%;">
+        <form action="process_insert_product.php" method="post" enctype="multipart/form-data" class="form-add" style="height: 100%; width: 100%;">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-2" id="addleModalLabel">Thêm mới sản phẩm</h1>
@@ -91,9 +91,18 @@
                     <div class="invalid name_product"></div>
                     <br>
 
-                    <label class="fs-5 form-label" for="imgProduct">2. Nhập ảnh sản phẩm ( Nhập link, mỗi link cách nhau bằng dấu ',' ): </label>
+                    <label class="fs-5 form-label" for="imgProduct">2. Nhập link ảnh sản phẩm (hoặc tải file): </label>
                     <br>
-                    <input id="imgProduct" name="img_product" class="form-control form-control-lg" type="text" placeholder="Ảnh..." aria-label=".form-control-lg">
+                    <div class="input-image row align-items-center">
+                        <div class="col-6">
+                            <input id="imgProduct" name="img_product" class="form-control form-control-lg" type="text" placeholder="Link ảnh..." aria-label=".form-control-lg">
+                        </div>
+                        <div class="col-6">
+                            <label class="btn btn-default btn-file border">
+                                Chọn file <input type="file" name="img_product_file" accept="image/png, image/gif, image/jpeg" style="display: none;">
+                            </label>
+                        </div>
+                    </div>
                     <br>
                     <div class="image-product">
                         <div class="row row-cols-4 overflow-auto" style="max-width: 35%; max-height: 20rem;">
@@ -164,11 +173,6 @@
                                     ?>
                                 </ul>
                             </div>
-                        </div>
-                        <div class="col-3">
-                            <label class="fs-5 form-label required" for="quantityProduct">5. Nhập số lượng nhập: </label>
-                            <br>
-                            <input id="quantityProduct" name="quantity_product" class="form-control form-control-lg" type="number" placeholder="Số lượng..." aria-label=".form-control-lg" required>
                         </div>
                     </div>
                     <br>
