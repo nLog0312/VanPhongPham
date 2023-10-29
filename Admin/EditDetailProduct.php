@@ -22,14 +22,15 @@
         require_once './ShareAdmin/root/connect.php';
         require_once './ShareAdmin/root/funcion.php';
         $id = $_GET['id'];
-        $stringSQL = "SELECT * FROM `sanpham` WHERE `ma_sanpham` = '$id'";
+        $idProduct = $_GET['idProduct'];
+        $stringSQL = "SELECT * FROM `sanpham` WHERE `ma_sanpham` = '$idProduct'";
         $result = mysqli_query($connect, $stringSQL);
         $each = mysqli_fetch_array($result);
 
-        $stringSQL = "SELECT * FROM `chitiet_sanpham` WHERE `ma_sanpham` = '$id'";
+        $stringSQL = "SELECT * FROM `chitiet_sanpham` WHERE `ma_sanpham` = '$idProduct'";
         $resultChiTiet = mysqli_query($connect, $stringSQL);
 
-        function get_thuoctinh($id, $connect) {
+        function get_thuoctinh($idProduct, $connect) {
             $stringSQL = "SELECT * FROM `thuoctinh`";
             $result = mysqli_query($connect, $stringSQL);
             $each = mysqli_fetch_array($result);
@@ -37,7 +38,7 @@
             $ten_thuoctinhcon = '';
             $ten_thuoctinhcha = '';
             foreach ($result as $each) {
-                if ($each['ma_thuoctinh'] == $id) {
+                if ($each['ma_thuoctinh'] == $idProduct) {
                     $ten_thuoctinhcon = $each['ten_thuoctinhcon'];
 
                     foreach ($result as $eachV2) {
@@ -51,57 +52,26 @@
             }
             return $ten_thuoctinhcha . ' - ' . $ten_thuoctinhcon;
         }
+
+        $currentEdit;
+        foreach ($resultChiTiet as $eachChiTiet) {
+            if ($eachChiTiet['id'] == $id) {
+                $currentEdit = $eachChiTiet;
+                break;
+            }
+        }
     ?>
-    <div class="toast-container position-fixed p-3" style="top: 80px; right: 50px;">
-        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <?php
-                    if (isset($_SESSION['toast-success'])) {
-                        echo '<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" xml:space="preserve" width="24px" height="24px" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle style="fill:#25AE88;" cx="25" cy="25" r="25"></circle> <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" points=" 38,15 22,33 12,25 "></polyline> </g></svg>';
-                        echo '<strong class="ms-2 me-auto">Thông báo</strong>';
-                    }
-                    if (isset($_SESSION['toast-error'])) {
-                        echo '<svg fill="#ff0000" width="24px" height="24px" viewBox="0 -8 528 528" xmlns="http://www.w3.org/2000/svg" stroke="#ff0000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title>fail</title><path d="M264 456Q210 456 164 429 118 402 91 356 64 310 64 256 64 202 91 156 118 110 164 83 210 56 264 56 318 56 364 83 410 110 437 156 464 202 464 256 464 310 437 356 410 402 364 429 318 456 264 456ZM264 288L328 352 360 320 296 256 360 192 328 160 264 224 200 160 168 192 232 256 168 320 200 352 264 288Z"></path></g></svg>';
-                        echo '<strong class="ms-2 me-auto">Lỗi</strong>';
-                    }
-                ?>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-                <?php
-                    if (isset($_SESSION['toast-success'])) {
-                        echo $_SESSION['toast-success'];
-                        unset($_SESSION['toast-success']);
-                        echo '<script>
-                                var toastLive = document.getElementById("liveToast")
-                                var toast = new bootstrap.Toast(toastLive)
-                                toast.show()
-                            </script>';
-                    }
-                    if (isset($_SESSION['toast-error'])) {
-                        echo $_SESSION['toast-error'];
-                        unset($_SESSION['toast-error']);
-                        echo '<script>
-                                var toastLive = document.getElementById("liveToast")
-                                var toast = new bootstrap.Toast(toastLive)
-                                toast.show()
-                            </script>';
-                    }
-                ?>
-            </div>
-        </div>
-    </div>
     <div class="modal" id="editModal" tabindex="-1" style="display: block;">
         <div class="modal-dialog modal-dialog-centered modal-fullscreen">
-            <form action="process_update_product.php?id=<?php echo $id;?>" method="post" enctype="multipart/form-data" class="form-add" style="height: 100%; width: 100%;">
+            <form enctype="multipart/form-data" class="form-add" style="height: 100%; width: 100%;">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-2" id="addleModalLabel">Sửa sản phẩm</h1>
-                        <a href="ProductCategory.php">X</a>
+                        <h1 class="modal-title fs-2" id="addleModalLabel">Chi tiết sản phẩm</h1>
+                        <button type="submit" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
                     <div class="modal-body" style="overflow-x: hidden;">
-                        <label class="fs-5 form-label required" for="nameProduct">Tên sản phẩm: </label>
+                        <label class="fs-5 form-label" for="nameProduct">Tên sản phẩm: </label>
                         <br>
                         <input id="nameProduct" name="name_product" value="<?php echo $each['ten_sanpham']; ?>" class="form-control form-control-lg" type="text" placeholder="Tên sản phẩm..." aria-label=".form-control-lg" required>
                         <div class="invalid name_product"></div>
@@ -133,14 +103,19 @@
                         </div>
                         <br>
 
-                        <label class="fs-5 form-label required" for="priceProduct">Giá bán sản phẩm: </label>
-                        <input id="priceProduct" name="price_product" type="number" value="<?php echo $each['gia_sanpham']; ?>" class="form-control form-control-lg" type="text" placeholder="Giá sản phẩm..." aria-label=".form-control-lg" required>
+                        <label class="fs-5 form-label " for="priceProduct">Giá bán sản phẩm: </label>
+                        <span class="ms-2 fs-4"> <?php echo product_price($each['gia_sanpham']); ?></span>
                         <br>
 
-                        <div class="form-floating mt-2">
-                            <textarea name="desc_product" class="form-control" placeholder="Mô tả sản phẩm..." id="descProduct" style="height: 100px"><?php echo $each['mota_sanpham']; ?></textarea>
-                            <label for="descProduct">Mô tả sản phẩm</label>
-                        </div>
+                        <label class="fs-5 form-label " for="priceProduct">Mô tả sản phẩm: </label>
+                        <br>
+                        <span class="ms-2 fs-4"> <?php
+                            if ($each['mota_sanpham'] != '') {
+                                echo $each['mota_sanpham'];
+                            } else {
+                                echo 'Chưa có mô tả';
+                            }
+                        ?></span>
                         <br>
 
                         <label class="fs-5 form-label " for="priceProduct">Danh mục chi tiết sản phẩm: </label>
@@ -190,13 +165,13 @@
                                                                 </a>
                                                                 <ul class='dropdown-menu'>
                                                                     <li class='d-flex align-items-center'>
-                                                                        <a style='cursor: pointer;' class='dropdown-item d-flex align-items-center fs-5' href='EditDetailProduct.php?idProduct=" . $id . "&id=" . $eachChiTiet['id'] ."'>
+                                                                        <a style='cursor: pointer;' class='dropdown-item d-flex align-items-center fs-5' href='EditDetailProduct.php?id=" . $eachChiTiet['id'] . "'>
                                                                             <ion-icon name='create-outline'></ion-icon>
                                                                             <span class='ms-4'>Sửa</spam>
                                                                         </a>
                                                                     </li>
                                                                     <li class='d-flex align-items-center'>
-                                                                        <a style='cursor: pointer;' class='dropdown-item d-flex align-items-center fs-5' href='DeleteDetailProduct.php?idProduct=" . $id . "&id=" . $eachChiTiet['id'] . "'>
+                                                                        <a style='cursor: pointer;' class='dropdown-item d-flex align-items-center fs-5' href='DeleteDetailProduct.php?idProduct=" . $idProduct . "&id=" . $eachChiTiet['id'] . "'>
                                                                             <ion-icon name='trash-outline'></ion-icon>
                                                                             <span class='ms-4'>Xoá</spam>
                                                                         </a>
@@ -224,17 +199,16 @@
             </form>
         </div>
         <!-- Modal Add -->
-        <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true" style="background: rgb(0,0,0,0.5);">
+        <div class="modal fade show" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-modal="true" style="display: block; background: rgb(0,0,0,0.5);">
             <div class="modal-dialog modal-dialog-centered modal-lg">
-                <form action="process_insert_product_detail.php?id=<?php echo $id;?>" method="post" enctype="multipart/form-data" class="form-add" style="height: 100%; width: 100%;">
+                <form action="process_update_product_detail.php?id=<?php echo $id;?>" method="post" enctype="multipart/form-data" class="form-add" style="height: 100%; width: 100%;">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-2" id="addleModalLabel">Thêm mới chi tiết sản phẩm</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <h1 class="modal-title fs-2" id="addleModalLabel">Sửa chi tiết sản phẩm</h1>
                         </div>
 
                         <div class="modal-body" style="overflow-x: hidden;">
-                            <input hidden name="linkParent" type="text" value="EditProduct.php?id=<?php echo $id;?>">
+                            <input hidden name="linkParent" type="text" value="EditProduct.php?id=<?php echo $idProduct;?>">
                             <label class="fs-5 form-label" for="imgProduct">1. Nhập link ảnh sản phẩm (hoặc tải file): </label>
                             <br>
                             <div class="input-image row align-items-center">
@@ -251,6 +225,7 @@
                             <div class="image-product">
                                 <div class="row row-cols-4 overflow-auto" style="max-width: 35%; max-height: 20rem;">
                                     <div class="col">
+                                        <img style='max-width: 5rem; text-align: -webkit-center;' class="img-thumbnail" src="<?php echo $currentEdit['anhs_sanpham'];?>" alt="image">
                                     </div>
                                 </div>
                             </div>
@@ -291,6 +266,9 @@
                                                             $check = false;
                                                             // check property product
                                                             foreach ($resultChiTiet as $eachProduct) {
+                                                                if ($eachProduct['ma_thuoctinh'] == $currentEdit['ma_thuoctinh']) {
+                                                                    continue;
+                                                                }
                                                                 if ($eachProduct['ma_thuoctinh'] == $eachChild['ma_thuoctinh']) {
                                                                     $check = true;
                                                                 }
@@ -303,6 +281,20 @@
                                                                             </span>
                                                                         </label>
                                                                     </li>";
+                                                            } elseif ($eachChild['ma_thuoctinh'] == $currentEdit['ma_thuoctinh']) {
+                                                                echo "<li class='ms-4'>
+                                                                        <label>
+                                                                            <input checked type='radio' name='property' value='" . $eachChild['ma_thuoctinh'] . "'>
+                                                                            <span class='ms-2'>
+                                                                                " . $eachChild['ten_thuoctinhcon'] . "
+                                                                            </span>
+                                                                        </label>
+                                                                    </li>";
+
+                                                                echo "<script>
+                                                                        const dpBtnEdit = document.getElementById('multiSelectDropdown');
+                                                                        dpBtnEdit.innerHTML = '" . $eachChild['ten_thuoctinhcon'] . "';
+                                                                    </script>";
                                                             } else {
                                                                 echo "<li class='ms-4'>
                                                                         <label>
@@ -330,13 +322,15 @@
                             <div class="col-6">
                                 <label class="fs-5 form-label required" for="quantityProduct">3. Nhập số lượng nhập: </label>
                                 <br>
-                                <input id="quantityProduct" name="quantity_product" class="form-control form-control-lg" type="number" placeholder="Số lượng..." aria-label=".form-control-lg" required>
+                                <input id="quantityProduct" value="<?php echo $currentEdit['soluong'];?>" name="quantity_product" class="form-control form-control-lg" type="number" placeholder="Số lượng..." aria-label=".form-control-lg" required>
                             </div>
                         </div>
 
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Lưu</button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                <a href="<?php echo "EditProduct.php?id=" . $idProduct;?>">Đóng</a>
+                            </button>
                         </div>
                     </div>
                 </form>
