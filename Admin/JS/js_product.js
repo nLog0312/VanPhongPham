@@ -26,9 +26,9 @@ function handleCB() {
     let mySelectedListItemsText = ''; 
 
     chBoxes.forEach((checkbox) => { 
-        if (checkbox.checked) { 
-            mySelectedListItems.push(checkbox.parentElement.querySelector('span').innerText); 
-            mySelectedListItemsText += checkbox.parentElement.querySelector('span').innerText + ', '; 
+        if (checkbox.checked) {
+            mySelectedListItems.push(checkbox.parentElement.querySelector('span').innerText.trim()); 
+            mySelectedListItemsText += checkbox.parentElement.querySelector('span').innerText.trim() + ', '; 
         } 
     });
 
