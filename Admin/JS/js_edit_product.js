@@ -64,7 +64,7 @@ const dpBtn = document.getElementById('multiSelectDropdown');
 
 function handleRaB() {
     dpBtn.innerText = '';
-    dpBtn.innerText = this.parentElement.querySelector('span').innerText;
+    dpBtn.innerText = this.parentElement.querySelector('span').innerText.trim();
 }
 
 inputRadios.forEach(input => {
