@@ -52,7 +52,7 @@
                         <div class="header-color">Màu sắc</div>
                         <div class="x099">
                             <button class="details-button">
-
+                                Trắng
                             </button>
                         </div>
                     </div>
@@ -94,7 +94,7 @@
 
     </div>
     <?php  foreach ($result as $index => $each) { ?>
-    <div class="inf-product">
+        <div class="inf-product">
         <div class="text-inf-product">
             <?php
             if ($each['mota_sanpham'] != '') {
