@@ -1,12 +1,32 @@
 <?php
     include('header.php');
 ?>
+<?php
+    require_once './connect/connect.php';
+    require_once './connect/funcion.php';
+    $search = "";
+    $id = $_GET['id'];
+    $stringSQL = "SELECT * FROM `sanpham` WHERE `ma_sanpham` = '$id'";
+    $result = mysqli_query($connect, $stringSQL);
+?>
 <div class="center-header"></div>
 <div class="body-color-product">
+    <?php  foreach ($result as $index => $each) { ?>
     <div class="container-product flex">
         <div class="picture-product">
                 <div class="link-product">
-                    <img src="picture/1_1.jpg" class="product-image"/>
+                    <img src="
+                    <?php
+                    if (str_contains($each['anh_sanpham'], 'https')){
+                        echo $each['anh_sanpham'];
+                    }
+                    else {
+                        echo "../Admin/" . $each['anh_sanpham'];
+                    }
+                    ?>
+
+                        " class="product-image"/>
+
                 </div>
             <div class="list-pic-product">
                 <div class="list-pic">
@@ -20,18 +40,20 @@
         <div class="details-product">
             <div class="details-header">
                <div class="text-header">
-                    Sản phẩm A4 Sản phẩm A4Sản phẩm A4Sản phẩm A4Sản phẩm A4Sản phẩm A4
+                   <?php echo $each['ten_sanpham'];?>
                </div>
                 <div class="details-prices">
                     <div class="text-prices">
-                        120.000đ
+                        <?php echo product_price($each['gia_sanpham']);?>
                     </div>
                 </div>
                 <div class="details-choose">
                     <div class="color-details">
                         <div class="header-color">Màu sắc</div>
                         <div class="x099">
-                            <button class="details-button">Trắng</button>
+                            <button class="details-button">
+
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -50,9 +72,7 @@
                         <div>
                             <button class="add-giohang">
                                 <i class="fas fa-shopping-cart"></i>
-                               <span>
-                                   Thêm Vào Giỏ Hàng
-                               </span>
+                                <span>Thêm Vào Giỏ Hàng</span>
                             </button>
                             <button class="muaHang">Mua Ngay</button>
                         </div>
@@ -62,6 +82,8 @@
 
         </div>
     </div>
+    <?php }?>
+
 </div>
 <div class="center-header"></div>
 <div class="body-color-product">
@@ -71,11 +93,19 @@
         </div>
 
     </div>
+    <?php  foreach ($result as $index => $each) { ?>
     <div class="inf-product">
         <div class="text-inf-product">
-           Đây là thông tin sản phẩm
+            <?php
+            if ($each['mota_sanpham'] != '') {
+                echo $each['mota_sanpham'];
+            } else {
+                echo 'Chưa có mô tả';
+            }
+            ?>
         </div>
     </div>
+    <?php }?>
    <div class="bottom-ttsp"></div>
 </div>
 
