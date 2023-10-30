@@ -197,12 +197,17 @@
     margin-right: auto;
     margin-left: auto;
     width: 1200px;
-    height: 3.75rem;
+    height: auto;
     background-color: white;
+    word-wrap: break-word;
 }
 .text-inf-product{
+    padding-bottom: 1.5rem;
     margin-left: 1.5rem;
+    margin-right: 1.5rem;
     font-size: 18px;
+    white-space: pre-line;
+
 }
 .bottom-ttsp{
     width: 100%;
