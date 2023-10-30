@@ -34,6 +34,12 @@
 
     // description
     $description_product = $_POST['desc_product'];
+    if (str_contains($description_product, "'")) {
+        $description_product = str_replace("'", "\'", $description_product);
+    }
+    if (str_contains($price_product, '"')) {
+        $description_product = str_replace('"', '\"', $description_product);
+    }
 
     $update_date = date('Y-m-d H:i:s'); // Get current date
 
