@@ -1,28 +1,48 @@
 <style>
     <?php include 'CSS/body.css' ?>
 </style>
+<?php
+    require_once './connect/connect.php';
+    require_once './connect/funcion.php';
+    $search = "";
+    $stringSQL = "SELECT * FROM `sanpham` WHERE `ten_sanpham` LIKE '%$search%' ORDER BY `ngaytao` DESC";
+    $result = mysqli_query($connect, $stringSQL);
+?>
 <div class="_home-outline2">
     <div class="_dm-head">
         <div class="_sanpham_text">SẢN PHẨM</div>
     </div>
     <div class="grid-items">
-        <a href="product.php" class="_IT1">
+    <?php  foreach ($result as $index => $each) { ?>
+        <a href="product.php?id=<?php echo $each['ma_sanpham'];?>" class="_IT1">
             <div class="_btn_product">
                 <div class="width_pic">
-                    <img class="picture_items" src="picture/1_1.jpg"/>
+                    <img class="picture_items" src="
+                    <?php
+                        if (str_contains($each['anh_sanpham'], 'https')){
+                            echo $each['anh_sanpham'];
+                        }
+                        else {
+                            echo "../Admin/" . $each['anh_sanpham'];
+
+                        }
+                    ?>
+                    "
+                         >
                 </div>
                 <div class="center-text">
                     <div class="_text-items2 max-line">
-                        Giấy A4 in ấn - sử dụng cho tất cả các loại máy in đời cao
+                        <?php echo $each['ten_sanpham'];?>
                     </div>
                 </div>
                 <div class="center-text">
                     <div class="_text-items3 max-line">
-                        đ150.000
+                        <?php echo product_price($each['gia_sanpham']);?>
                     </div>
                 </div>
             </div>
         </a>
+    <?php }?>
     </div>
     <div>
         <div class="nut-xemthem">
