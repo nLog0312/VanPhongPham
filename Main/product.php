@@ -25,15 +25,15 @@
                     }
                     ?>
 
-                        " class="product-image"/>
+                    alt="..." " class="product-image"/>
 
                 </div>
             <div class="list-pic-product">
                 <div class="list-pic">
-                    <img src="picture/1_1.jpg" class="list-product-image"/>
-                    <img src="picture/1_1.jpg" class="list-product-image"/>
-                    <img src="picture/1_1.jpg" class="list-product-image"/>
-                    <img src="picture/1_1.jpg" class="list-product-image"/>
+                    <img src="picture/1_1.jpg" class="list-product-image" alt="..." "/>
+                    <img src="picture/1_1.jpg" class="list-product-image" alt="..." "/>
+                    <img src="picture/1_1.jpg" class="list-product-image" alt="..." "/>
+                    <img src="picture/1_1.jpg" class="list-product-image" alt="..." "/>
                 </div>
             </div>
         </div>
