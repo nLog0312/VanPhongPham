@@ -96,7 +96,7 @@
                                 else {
                                     echo "../Admin/" . $each['anh_sanpham'];
                                 }
-                                ?>" style="width: 100%; height: 100%">
+                                ?>" style="width: 100%; height: 100%" alt="..">
                             </div>
                             <div class="ten-giohang">
                                 <div class="max-text-giohang">
