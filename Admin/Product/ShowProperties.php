@@ -15,7 +15,7 @@
         foreach ($lstthuoctinhcha as $index => $each) {
             $index += 1;
             $thuoctinhcon = '';
-            foreach ($result as $index => $eachLst) {
+            foreach ($result as $eachLst) {
                 if ($eachLst['ten_thuoctinhcha'] == $each['ma_thuoctinh']){
                     $thuoctinhcon .= $eachLst['ten_thuoctinhcon'] . ', ';
                 }
@@ -36,16 +36,16 @@
                         </a>
                         <ul class='dropdown-menu'>
                             <li class='d-flex align-items-center'>
-                                <button type='button' class='dropdown-item d-flex align-items-center fs-5' data-bs-toggle='modal' data-bs-target='#addModal'>
+                                <a href='EditProperty.php?id=" . $each['id'] . "' class='dropdown-item d-flex align-items-center fs-5'>
                                     <ion-icon name='create-outline'></ion-icon>
                                     <span class='ms-4'>Sửa</spam>
-                                </button>
+                                </a>
                             </li>
                             <li class='d-flex align-items-center'>
-                                <button type='button' class='dropdown-item d-flex align-items-center fs-5' data-bs-toggle='modal' data-bs-target='#deleteModal'>
+                                <a href='DeleteProperty.php?id=" . $each['ma_thuoctinh'] . "' class='dropdown-item d-flex align-items-center fs-5'>
                                     <ion-icon name='trash-outline'></ion-icon>
                                     <span class='ms-4'>Xoá</spam>
-                                </button>
+                                </a>
                             </li>
                         </ul>
                     </div>
