@@ -26,10 +26,10 @@
             <div class="header-question-hotro">Câu hỏi thường gặp</div>
             <div class="question" onclick="chuyenhuongCSKH()">
                 <div class="question-text">
-                    Làm sao để liên hệ Chăm sóc khách hàng?
+                    Cách xử lý khi hệ thống không thể xác minh tài khoản Shopee của tôi để đăng nhập? Tại sao hệ thống không thể xác minh được yêu cầu đăng nhập của tôi?
                 </div>
             </div>
-            <div class="question" onclick="chuyenhuongCSKH()">
+            <div class="question" onclick="chuyenhuongCSBM()">
                 <div class="question-text">
                     CHÍNH SÁCH BẢO MẬT
                 </div>
@@ -100,5 +100,8 @@
 <script>
     function chuyenhuongCSKH() {
         window.location.href = 'lienheCSKH.php';
+    }
+    function chuyenhuongCSBM() {
+        window.location.href = 'CSBM.php';
     }
 </script>

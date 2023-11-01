@@ -23,8 +23,43 @@
 
 <div class="hotro-war2">
     <div style="margin-bottom: 30px">
-        <div class="header-question-hotro">Làm sao để liên hệ Chăm sóc khách hàng?</div>
-
+        <div class="header-question-hotro">Cách xử lý khi hệ thống không thể xác minh tài khoản
+            Hoàng Hà của tôi để đăng nhập? Tại sao hệ thống không thể xác minh được yêu cầu đăng nhập của tôi?</div>
+        <div style="padding: 10px; font-weight: bold; font-size: 20px">
+            Cách 1: Đăng nhập bằng một phương thức đăng nhập khác (nếu có). Ví dụ:
+        </div>
+        <div style="padding: 10px; text-align: justify;">
+            - &nbsp;&nbsp;&nbsp;  Đăng nhập bằng mật khẩu
+            <br/>
+            - &nbsp;&nbsp;&nbsp;  Đăng nhập bằng số điện thoại
+            <br/>
+            - &nbsp;&nbsp;&nbsp;  Đăng nhập bằng mã QR code (chỉ có tại phiên bản website của Hoàng Hà) <br/>
+            - &nbsp;&nbsp;&nbsp;  Đăng nhập bằng tài khoản Facebook đã liên kết với tài khoản Hoàng Hà <br/>
+            -  &nbsp;&nbsp;&nbsp; Đăng nhập bằng địa chỉ Gmail đã liên kết với tài khoản Hoàng Hà <br/>
+            - &nbsp;&nbsp;&nbsp;  Đăng nhập bằng tài khoản AppleID đã liên kết với tài khoản Hoàng Hà <br/>
+        </div>
+        <div style="padding: 10px; font-weight: bold; font-size: 20px">
+            Cách 2:
+        </div>
+        <div style="padding: 10px; text-align: justify;">
+            Nếu tài khoản bạn đã đăng nhập thành công trước đó bằng thiết bị khác với thiết bị đang sử dụng,
+            vui lòng thiết lập thêm thông tin xác thực tài khoản Hoàng Hà trên thiết bị cũ trước (số điện thoại,
+            email, mật khẩu tài khoản Hoàng Hà) rồi sau đó mới thử đăng nhập lại bằng thiết bị mới.
+        </div>
+        <div style="padding: 10px; font-weight: bold; font-size: 20px">
+            Cách 3:
+        </div>
+        <div style="padding: 10px; text-align: justify;">
+            Trong trường hợp bạn vừa đổi mật khẩu tài khoản và hệ thống chưa thể xác thực yêu cầu đăng nhập,
+            bạn vui lòng thử lại đăng nhập vào ngày hôm sau để Hoàng Hà kịp cập nhật hệ thống trạng thái mới đúng nhất
+        </div>
+        <div style="padding: 10px; font-weight: bold; font-size: 20px">
+            Cách 4:
+        </div>
+        <div style="padding: 10px; text-align: justify;">
+            Nếu những cách xử lý trên không hiệu quả,
+            bạn vui lòng liên hệ tới bộ phận Chăm sóc Khách hàng của Hoàng Hà để được hỗ trợ trực tiếp
+        </div>
     </div>
 
     <div class="footer-hotro">
