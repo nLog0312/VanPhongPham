@@ -74,6 +74,21 @@
                                 <i class="fas fa-shopping-cart"></i>
                                 <span>Thêm Vào Giỏ Hàng</span>
                             </button>
+                            <div class="thong-bao">
+                                <div class="thong-bao-header">
+                                    <div class="text-giohang">Giỏ hàng</div>
+                                    <div class="close-btn">&times;</div>
+                                </div>
+                                <p style="justify-content: center; align-items: center; display: flex;">
+                                    <img src="picture/checkok.png" style="width: 35px; height: 35px; margin-right: 8px;">
+                                    <span>
+                                        Đã thêm vào giỏ hàng!
+                                    </span>
+                                </p>
+                                <hr style="margin: 0"/>
+                                <button class="ok-btn2">OK</button>
+                                <button class="ok-btn" onclick="chuyenHuonggiohang()">Vào giỏ hàng</button>
+                            </div>
                             <button class="muaHang">Mua Ngay</button>
                         </div>
                     </div>
@@ -83,7 +98,6 @@
         </div>
     </div>
     <?php }?>
-
 </div>
 <div class="center-header"></div>
 <div class="body-color-product">
@@ -126,10 +140,28 @@ include('Footer.php');
             quantityInput.value = currentValue - 1;
         }
     }
-
     function increaseQuantity() {
         var quantityInput = document.getElementById("quantityInput");
         var currentValue = parseInt(quantityInput.value);
         quantityInput.value = currentValue + 1;
+    }
+
+    var addButton = document.querySelector('.add-giohang');
+    var thongBao = document.querySelector('.thong-bao');
+    var closeBtn = document.querySelector('.close-btn');
+    var okButton = document.querySelector('.ok-btn2');
+    addButton.addEventListener('click', function() {
+        thongBao.style.display = 'block';
+    });
+
+    closeBtn.addEventListener('click', function() {
+        thongBao.style.display = 'none';
+    });
+    okButton.addEventListener('click', function() {
+        thongBao.style.display = 'none';
+    });
+
+    function chuyenHuonggiohang() {
+        window.location.href = 'view_cart.php';
     }
 </script>

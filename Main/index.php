@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "icon" href="picture/logo-web.png" type="image/x-icon">
     <title>
-       Hoàng Hà Stationery - Mua bán đồ dùng văn phòng phẩm
+        Hoàng Hà Stationery - Mua bán đồ dùng văn phòng phẩm
     </title>
     <!--reset CSS-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
