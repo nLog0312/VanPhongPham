@@ -83,7 +83,7 @@
                 <div class="modal-body" style="overflow-x: hidden;">
                     <label class="fs-5 form-label required" for="nameParentProperties">1. Nhập tên thuộc tính (VD: Màu sắc, Chất liệu...): </label>
                     <br>
-                    <input id="nameParentProperties" name="name_parent_properties" class="form-control form-control-lg" type="text" placeholder="Tên thuộc tính..." aria-label=".form-control-lg" required>
+                    <input onchange="changeInput(event)" id="nameParentProperties" name="name_parent_properties" class="form-control form-control-lg" type="text" placeholder="Tên thuộc tính..." aria-label=".form-control-lg" required>
                     <div class="invalid name_parent_properties"></div>
                     <br>
 
@@ -102,4 +102,29 @@
         </form>
     </div>
 </div>
+<script>
+    const btnSubmit = document.querySelector('button[type="submit"]');
+    const error = document.querySelector('.name_parent_properties');
+
+    function changeInput(e) {
+        const tenthuoctinh = e.target;
+        const xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                console.log(this.responseText);
+                var result = JSON.parse(this.responseText);
+                if (result === true) {
+                    btnSubmit.disabled = true;
+                    error.innerHTML = "Tên thuộc tính đã tồn tại!";
+                } else {
+                    btnSubmit.disabled = false;
+                    error.innerHTML = "";
+                }
+            }
+        };
+        xhttp.open("GET", "check_tenthuoctinh.php?ten_thuoctinh=" + tenthuoctinh.value, true);
+        xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhttp.send();
+    }
+</script>
 <?php include_once './ShareAdmin/footer.php'; ?>
