@@ -36,7 +36,7 @@
 
 <script type="text/javascript">
     function chuyenHuong() {
-        window.location.href = 'index.php';
+        window.location.href = 'Login.php';
     }
     function chuyenHuong2() {
         window.location.href = 'Login.php';

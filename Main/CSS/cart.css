@@ -158,3 +158,13 @@
     position: sticky;
     bottom: 0;
 }
+
+.navigation-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    width: 136px;
+    color: #737373;
+}

@@ -8,58 +8,69 @@
     function chuyenHuong3() {
     window.location.href = 'Hotro.php';
 }
-    function decreaseQuantity() {
-        var quantityInput = document.getElementById("quantityInput");
+
+
+    function decreaseQuantity(productId) {
+        var quantityInput = document.getElementById("quantityInput_" + productId);
         var currentValue = parseInt(quantityInput.value);
 
         if (currentValue > 1) {
             quantityInput.value = currentValue - 1;
+            // Thực hiện các hành động cần thiết khi giảm số lượng
         }
     }
 
-    function increaseQuantity() {
-        var quantityInput = document.getElementById("quantityInput");
+    function increaseQuantity(productId) {
+        var quantityInput = document.getElementById("quantityInput_" + productId);
         var currentValue = parseInt(quantityInput.value);
         quantityInput.value = currentValue + 1;
+        // Thực hiện các hành động cần thiết khi tăng số lượng
     }
-    // Lấy tất cả các input checkbox trong một mảng
-    var checkboxes = document.querySelectorAll('.in-label input[type="checkbox"]');
 
-    // Lấy input checkbox cuối cùng
-    var lastCheckbox = checkboxes[checkboxes.length - 1];
 
-    // Hàm xử lý khi click vào input cuối cùng
-    lastCheckbox.addEventListener('change', function() {
-    // Nếu input cuối cùng được chọn, chọn tất cả các input khác
-    if (lastCheckbox.checked) {
-    checkboxes.forEach(function(checkbox) {
-    checkbox.checked = true;
-});
-} else {
-    // Nếu input cuối cùng không được chọn, bỏ chọn tất cả các input khác
-    checkboxes.forEach(function(checkbox) {
-    checkbox.checked = false;
-});
-}
-});
 
-    // Xử lý sự kiện khi các input khác được click
-    checkboxes.forEach(function(checkbox, index) {
-    // Nếu không phải là input cuối cùng
-    if (index !== checkboxes.length - 1) {
-    checkbox.addEventListener('change', function() {
-    // Nếu tất cả các input khác đều được chọn, chọn input cuối cùng
-    if ([...checkboxes].slice(0, -1).every(function(checkbox) {
-    return checkbox.checked;
-})) {
-    lastCheckbox.checked = true;
-} else {
-    // Ngược lại, bỏ chọn input cuối cùng
-    lastCheckbox.checked = false;
-}
-});
-}
-});
+
+
+
+    //-----------check all
+    var productCheckboxes = document.querySelectorAll('.product-checkbox');
+    var selectAllCheckbox = document.getElementById('myCheckbox_final');
+
+    productCheckboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            var allProductsSelected = Array.from(productCheckboxes).every(function(checkbox) {
+                return checkbox.checked;
+            });
+
+            if (allProductsSelected) {
+                selectAllCheckbox.style.display = 'inline-block';
+            } else {
+                selectAllCheckbox.style.display = 'none';
+            }
+        });
+    });
+
+    selectAllCheckbox.addEventListener('change', function() {
+        productCheckboxes.forEach(function(checkbox) {
+            checkbox.checked = selectAllCheckbox.checked;
+        });
+    });
+
+
+    function applyAttributes() {
+        // Lấy giá trị các thuộc tính phân loại hàng (kích cỡ, màu sắc)
+        var size = document.getElementById('size').value;
+        var color = document.getElementById('color').value;
+
+        // Thực hiện xử lý với các giá trị thuộc tính đã chọn (ví dụ: gửi yêu cầu đến server)
+        // ...
+
+        // Sau khi xử lý xong, ẩn cửa sổ phân loại hàng
+        var phanLoaiOptions = document.querySelector('.phanloai-options');
+        phanLoaiOptions.style.display = 'none';
+    }
+
+
 
 
 

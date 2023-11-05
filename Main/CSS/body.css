@@ -178,15 +178,16 @@ div{
     transform: translateY(-3px); /* Làm cho thẻ nổi lên một chút */
     transition: transform 0.3s ease; /* Thêm hiệu ứng chuyển động mềm dẻo */
 }
-._danhMuc{
+.bodysanpham{
     min-height: 50rem;
-    height: 200px
+    height: auto
 }
 ._dm-head
 {
     display: flex;
     align-items: center;
     height: 3.75rem;
+    margin-top:  1.25rem;
     background-color: white;
 }
 ._home-outline{
@@ -194,7 +195,7 @@ div{
     margin-top: 1.25rem;
     background-color: #fff;
 }
-._home-outline2{
+._home-outline3{
     min-height: 18.875rem;
     margin-top: 1.25rem;
     margin-bottom: 70px;
