@@ -1,6 +1,9 @@
 <?php
 	session_start();
-    if (!isset($_SESSION['user'])) {
+    if (!isset($_SESSION['user']) || !isset($_SESSION['admin'])) {
+        if (!$_SESSION['admin']) {
+            header('Location: ../Main/index.php');
+        }
         header('Location: ../Main/Login.php');
     }
 ?>
@@ -10,8 +13,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        Admin - Cửa hàng văn phòng phẩm
+        Admin - Hoàng Hà Stationery
     </title>
+    <link rel = "icon" href="IMG/logo.png" type="image/x-icon">
 
     <!-- CSS -->
     <link rel="stylesheet" href="./CSS/style_main.css">
@@ -117,7 +121,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#0">
+                    <a href="CustomerCategory.php">
                     <svg fill="#000000" width="64px" height="64px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M5.1 7.93A2.87 2.87 0 0 0 7.87 5 2.88 2.88 0 0 0 5.1 2a2.88 2.88 0 0 0-2.78 3A2.88 2.88 0 0 0 5.1 7.93zm0-4.67A1.62 1.62 0 0 1 6.62 5 1.63 1.63 0 0 1 5.1 6.68 1.63 1.63 0 0 1 3.58 5 1.62 1.62 0 0 1 5.1 3.26zm7.19 5.05a2.39 2.39 0 0 0 2.3-2.46 2.39 2.39 0 0 0-2.3-2.47A2.39 2.39 0 0 0 10 5.85a2.39 2.39 0 0 0 2.29 2.46zm0-3.68a1.15 1.15 0 0 1 1.05 1.22 1.15 1.15 0 0 1-1.05 1.21 1.15 1.15 0 0 1-1.06-1.21 1.15 1.15 0 0 1 1.06-1.22zm-.07 4.93a3.85 3.85 0 0 0-3.07 1.51A5.21 5.21 0 0 0 5.1 9.18 5 5 0 0 0 0 14h1.25a3.72 3.72 0 0 1 3.85-3.57A3.71 3.71 0 0 1 8.94 14h1.25a4.5 4.5 0 0 0-.32-1.69 2.54 2.54 0 0 1 2.35-1.5 2.44 2.44 0 0 1 2.53 2.33V14H16v-.86a3.69 3.69 0 0 0-3.78-3.58z"></path></g></svg>
                         <span>Khách hàng</span>
                     </a>
@@ -164,20 +168,31 @@
         ?>
         <section class="search-and-user">
             <form>
-            <input type="search" placeholder="Tìm kiếm..." value="<?php echo $search?>">
-            <button type="submit" aria-label="submit form">
-                <svg aria-hidden="true">
-                <use xlink:href="#search"></use>
-                </svg>
-            </button>
+                <input type="search" name="search" placeholder="Tìm kiếm..." value="<?php echo $search?>">
+                <button type="submit" aria-label="submit form">
+                    <svg aria-hidden="true">
+                        <use xlink:href="#search"></use>
+                    </svg>
+                </button>
             </form>
             <div class="admin-profile">
-            <span class="greeting">Hello admin</span>
-            <div class="notifications">
-                <span class="badge">1</span>
-                <svg>
-                <use xlink:href="#users"></use>
-                </svg>
-            </div>
+                <span class="greeting">
+                    <?php
+                        echo "Xin chào, " . $_SESSION['user']['name'];
+                    ?>
+                </span>
+                <div class="dropdown">
+                    <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="notifications" style="cursor: pointer;">
+                            <!-- <span class="badge">1</span> -->
+                            <svg>
+                                <use xlink:href="#users"></use>
+                            </svg>
+                        </div>
+                    </div>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="../Main/logout.php">Thoát</a></li>
+                    </ul>
+                </div>
             </div>
         </section>

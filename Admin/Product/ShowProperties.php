@@ -4,8 +4,27 @@
     $stringSQL = "SELECT * FROM `thuoctinh` WHERE `ten_thuoctinhcha` LIKE '%$search%' ORDER BY `ngaytao` DESC";
 
     $result = mysqli_query($connect, $stringSQL);
+    $lstthuoctinh = array();
 
     if (mysqli_num_rows($result) > 0) {
+        if ($search != '') {
+            foreach ($result as $thuoctinhcha) {
+                array_push($lstthuoctinh, $thuoctinhcha);
+                $maTTcha = $thuoctinhcha['ma_thuoctinh'];
+                $stringSQL = "SELECT * FROM `thuoctinh` WHERE `ten_thuoctinhcha` = '$maTTcha' ORDER BY `ngaytao` DESC";
+                $resultCon = mysqli_query($connect, $stringSQL);
+                if (mysqli_num_rows($result) > 0) {
+                    foreach ($resultCon as $thuoctinhcon) {
+                        array_push($lstthuoctinh, $thuoctinhcon);
+                    }
+                }
+            }
+        } else {
+            foreach ($result as $thuoctinhcha) {
+                array_push($lstthuoctinh, $thuoctinhcha);
+            }
+        }
+
         $lstthuoctinhcha = array();
         foreach ($result as $index => $each) {
             if ($each['ten_thuoctinhcon'] == null){
@@ -15,7 +34,7 @@
         foreach ($lstthuoctinhcha as $index => $each) {
             $index += 1;
             $thuoctinhcon = '';
-            foreach ($result as $eachLst) {
+            foreach ($lstthuoctinh as $eachLst) {
                 if ($eachLst['ten_thuoctinhcha'] == $each['ma_thuoctinh']){
                     $thuoctinhcon .= $eachLst['ten_thuoctinhcon'] . ', ';
                 }
