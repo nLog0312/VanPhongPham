@@ -1,5 +1,8 @@
 <?php
 	session_start();
+    if (!isset($_SESSION['user'])) {
+        header('Location: ../Main/Login.php');
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
