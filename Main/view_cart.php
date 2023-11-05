@@ -16,10 +16,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 <div class="sticky-top">
-    <div class="navbar _header1">
-        <nav class="container navbar">
+    <div class="_header1">
+        <nav class="container-header">
             <div class="flex v-center">
-                <div style="margin-top: 2px; margin-bottom: 2px">
+                <div>
                     <a class="text-color-white-ha hover">Hotline: 0999.999.999 </a>
                     <span class="_span-space text-color-white-ga">|</span>
                     <a class="text-color-white-ha hover">
@@ -34,23 +34,41 @@
                         <i class ="fab fa-instagram text-color-white-ha"></i>
                     </a>
                 </div>
+            </div>
+            <div class="navbar__spacer"></div>
 
-            </div>
-            <div class="navbar__spacer">
-            </div>
-            <ul class="flex v-center">
-                <a class="text-color-white-ha hover" style="cursor: pointer" onclick="chuyenHuong3()">
+            <ul class="flex v-center"">
+            <a class="text-color-white-ha hover" style="cursor: pointer;" onclick="chuyenHuong3()">
                     <span class="notification ">
                         <i class="fas fa-question-circle"></i>
                     </span>
-                    Hỗ trợ
-                </a>
+                Liên hệ
+            </a>
             </ul>
-            <ul class=" flex v-center">
-                <a class="text-color-white-ha hover" href="#register" onclick="chuyenHuong()">Đăng ký</a>
-                <span class="_span-space text-color-white-ga">|</span>
-                <a class="text-color-white-ha hover" href="#login" onclick="chuyenHuong2()">Đăng nhập</a>
-            </ul>
+            <?php
+            if (isset($_SESSION['user'])) {
+                ?>
+                <div class="dropdown">
+                    <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="color: white; cursor: pointer;">
+                        <?php echo $_SESSION['user']["name"]; ?>
+                    </div>
+                    <ul class="dropdown-menu">
+                        <?php if (isset($_SESSION['admin'])) {?>
+                            <li><a class="dropdown-item" href="../Admin/index.php">Trang Admin</a></li>
+                        <?php } ?>
+                        <li><a class="dropdown-item" href="#">Thông tin cá nhân</a></li>
+                        <li><a class="dropdown-item" href="logout.php">Đăng xuất</a></li>
+                    </ul>
+                </div>
+                <?php
+            } else {
+                ?>
+                <ul class=" flex v-center">
+                    <a class="text-color-white-ha hover" href="#register" onclick="chuyenHuong()">Đăng ký</a>
+                    <span class="_span-space text-color-white-ga">|</span>
+                    <a class="text-color-white-ha hover" href="#login" onclick="chuyenHuong2()">Đăng nhập</a>
+                </ul>
+            <?php }?>
         </nav>
     </div>
 
