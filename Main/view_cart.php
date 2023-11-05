@@ -1,9 +1,15 @@
 <style>
-    <?php include 'CSS/Login.css' ?>
-    <?php include 'CSS/cart.css' ?>
-    <?php include 'CSS/Hotro.css' ?>
-    <?php include 'CSS/header.css' ?>
-    <?php include 'CSS/Product.css' ?>
+    <?php
+        session_start();
+        if (!isset($_SESSION['user'])){
+            header('Location: Login.php');
+        }
+        include 'CSS/Login.css';
+        include 'CSS/cart.css';
+        include 'CSS/Hotro.css';
+        include 'CSS/header.css';
+        include 'CSS/Product.css'
+    ?>
 </style>
 <?php
     require_once './connect/connect.php';
@@ -15,6 +21,9 @@
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <div class="sticky-top">
     <div class="navbar _header1">
         <nav class="container navbar">
@@ -46,11 +55,30 @@
                     Hỗ trợ
                 </a>
             </ul>
-            <ul class=" flex v-center">
-                <a class="text-color-white-ha hover" href="#register" onclick="chuyenHuong()">Đăng ký</a>
-                <span class="_span-space text-color-white-ga">|</span>
-                <a class="text-color-white-ha hover" href="#login" onclick="chuyenHuong2()">Đăng nhập</a>
-            </ul>
+            <?php
+                if (isset($_SESSION['user'])) {
+            ?>
+                <div class="dropdown">
+                    <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="color: white; cursor: pointer;">
+                        <?php echo $_SESSION['user']["name"]; ?>
+                    </div>
+                    <ul class="dropdown-menu">
+                        <?php if (isset($_SESSION['admin'])) {?>
+                        <li><a class="dropdown-item" href="../Admin/index.php">Trang Admin</a></li>
+                        <?php } ?>
+                        <li><a class="dropdown-item" href="#">Thông tin cá nhân</a></li>
+                        <li><a class="dropdown-item" href="logout.php">Đăng xuất</a></li>
+                    </ul>
+                </div>
+            <?php
+                } else {
+            ?>
+                <ul class=" flex v-center" style="margin-bottom: 0;">
+                    <a class="text-color-white-ha hover" href="#register" onclick="chuyenHuong()">Đăng ký</a>
+                    <span class="_span-space text-color-white-ga">|</span>
+                    <a class="text-color-white-ha hover" href="#login" onclick="chuyenHuong2()">Đăng nhập</a>
+                </ul>
+            <?php }?>
         </nav>
     </div>
 
