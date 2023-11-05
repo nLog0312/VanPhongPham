@@ -11,6 +11,7 @@
     $search = "";
     $stringSQL = "SELECT * FROM `sanpham` WHERE `ten_sanpham` LIKE '%$search%' ORDER BY `ngaytao` DESC";
     $result = mysqli_query($connect, $stringSQL);
+
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
@@ -81,8 +82,8 @@
                 <div class="AOV">
                     <div>
                         <div class="in-label">
-                            <input type="checkbox" id="myCheckbox">
-                            <label for="myCheckbox"></label>
+                            <input type="checkbox" class="product-checkbox" id="myCheckbox_<?php echo $each['ma_sanpham']; ?>">
+                            <label for="myCheckbox_<?php echo $each['ma_sanpham']; ?>"></label>
                         </div>
                     </div>
                     <div class="BOV">
@@ -104,17 +105,21 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="BOV phanloai">
+
+
+                        <div class="navigation-button">
                             Phân loại hàng
                         </div>
+
+
                         <div class="BOV dongia">
                             <?php echo product_price($each['gia_sanpham']);?>
                         </div>
                         <div class="BOV soluong">
-                            <div class="x0100">
-                                <button class="button-subtr" onclick="decreaseQuantity()">-</button>
-                                <input class="input-quantity" id="quantityInput" value="1">
-                                <button class="button-subtr" onclick="increaseQuantity()">+</button>
+                            <div style="display: flex;">
+                                <button class="button-subtr" onclick="decreaseQuantity('<?php echo $each['ma_sanpham']; ?>')">-</button>
+                                <input class="input-quantity" id="quantityInput_<?php echo $each['ma_sanpham']; ?>" value="1">
+                                <button class="button-subtr" onclick="increaseQuantity('<?php echo $each['ma_sanpham']; ?>')">+</button>
                             </div>
                         </div>
                         <div class="BOV sotien">

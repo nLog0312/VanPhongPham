@@ -2,7 +2,7 @@
     <?php include 'CSS/body.css' ?>
 </style>
 <div role="main" class="container" style="opacity: 1;">
-    <div class="_danhMuc">
+    <div class="bodysanpham">
         <div class="_home-outline">
             <div class="_dm-head">
                 <div class="_header-title">DANH MỤC</div>
