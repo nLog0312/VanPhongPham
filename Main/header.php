@@ -44,7 +44,7 @@
                     </div>
                     <ul class="dropdown-menu">
                         <?php if (isset($_SESSION['admin'])) {?>
-                        <li><a class="dropdown-item" href="#">Trang Admin</a></li>
+                        <li><a class="dropdown-item" href="../Admin/index.php">Trang Admin</a></li>
                         <?php } ?>
                         <li><a class="dropdown-item" href="#">Thông tin cá nhân</a></li>
                         <li><a class="dropdown-item" href="logout.php">Đăng xuất</a></li>

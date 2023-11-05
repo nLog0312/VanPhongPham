@@ -10,7 +10,8 @@
         $stringSQL = "SELECT * FROM `accounts` WHERE `phone` = '$email'";
         $resultAdmin = mysqli_query($connect, $stringSQL);
         if (mysqli_num_rows($resultAdmin) > 0) {
-            $row = mysqli_fetch_array($result);
+            $row = mysqli_fetch_array($resultAdmin);
+            $_SESSION['admin'] = true;
             $_SESSION['user'] = $row;
             $_SESSION['toast-success'] = "Đăng nhập thành công";
             header("Location: ../Admin/index.php");

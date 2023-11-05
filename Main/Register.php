@@ -1,4 +1,9 @@
-<?php session_start();?>
+<?php
+    session_start();
+    if (isset($_SESSION['user'])) {
+        header('Location: index.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +62,9 @@
         <div class="register-war1">
             <div class="logo-icon">
                 <div class="size-logo-icon">
-                    <img class="image-logo-login" src="picture/logoHH-do.png" alt="...">
+                    <a href="index.php">
+                        <img class="image-logo-login" src="picture/logoHH-do.png" alt="...">
+                    </a>
                 </div>
                 <div class="x0104"></div>
                 <div class="x0103">Đăng ký</div>
