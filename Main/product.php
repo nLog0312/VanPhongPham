@@ -1,6 +1,7 @@
 <?php
     include('header.php');
 ?>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 <?php
     require_once './connect/connect.php';
     require_once './connect/funcion.php';
@@ -54,11 +55,14 @@
                         echo "../Admin/" . $each['anh_sanpham'];
                     }
                     ?>
-
+                    "
                     alt="..." " class="product-image"/>
 
                 </div>
             <div class="list-pic-product">
+                <button id="prev-slide" class="slide-button" style="display: none;">
+                        <i class="fa-solid fa-angle-left"></i>
+                </button>
                 <div class="list-pic">
                     <?php foreach($resultDetail as $item) {?>
                         <img src="<?php
@@ -68,9 +72,12 @@
                             else {
                                 echo "../Admin/" . $item['anhs_sanpham'];
                             }
-                        ?>" class="list-product-image" alt="..." "/>
+                        ?>" class="list-product-image" onclick="showImg(this.src)" " />
                     <?php }?>
                 </div>
+                <button id="next-slide" class="slide-button">
+                    <i class="fa-solid fa-angle-right"></i>
+                </button>
             </div>
         </div>
         <div class="details-product">
@@ -167,94 +174,12 @@
 </div>
 
 <?php
-include('Footer.php');
+    include('Footer.php');
 ?>
-
+<script>
+    <?php include 'product.js' ?>
+</script>
 
 <style>
     <?php include 'CSS/Product.css' ?>
 </style>
-<script>
-    let maxQuantity = 0;
-    const errorQuantity = document.querySelector('.message-error');
-    const btnByNow = document.querySelector('.muaHang');
-    const quantityInput = document.getElementById("quantityInput");
-    const lstBtnProperty = document.querySelectorAll('.details-button');
-
-    function decreaseQuantity() {
-        var currentValue = parseInt(quantityInput.value);
-
-        errorQuantity.innerHTML = '';
-        if (currentValue > 1) {
-            quantityInput.value = currentValue - 1;
-        }
-    }
-    function increaseQuantity() {
-        let check = false;
-        lstBtnProperty.forEach(item => {
-            if (item.classList.contains('active')) {
-                check = true;
-            }
-        });
-        if (!check) {
-            errorQuantity.innerHTML = `<div class="alert-danger" role="alert">Vui lòng chọn thuộc tính!</div>`;
-            return;
-        }
-        var currentValue = parseInt(quantityInput.value);
-        var maxQuantity = parseInt(quantityInput.max);
-        if (currentValue >= maxQuantity) {
-            errorQuantity.innerHTML = `<div class="alert-danger" role="alert">Số lượng sản phẩm không đủ!</div>`;
-            return;
-        }
-        errorQuantity.innerHTML = '';
-        quantityInput.value = currentValue + 1;
-    }
-
-    var addButton = document.querySelector('.add-giohang');
-    var thongBao = document.querySelector('.thong-bao');
-    var closeBtn = document.querySelector('.close-btn');
-    var okButton = document.querySelector('.ok-btn2');
-    addButton.addEventListener('click', function() {
-        thongBao.style.display = 'block';
-    });
-
-    closeBtn.addEventListener('click', function() {
-        thongBao.style.display = 'none';
-    });
-    okButton.addEventListener('click', function() {
-        thongBao.style.display = 'none';
-    });
-
-    function chuyenHuonggiohang() {
-        window.location.href = 'view_cart.php';
-    }
-
-    function clickBtnProperty(e) {
-        lstBtnProperty.forEach(item => {
-            item.classList.remove('active');
-        });
-        errorQuantity.innerHTML = '';
-        e.target.classList.toggle('active');
-        quantityInput.value = 1;
-        const xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState === 4 && this.status === 200) {
-                var result = JSON.parse(this.responseText);
-                if (result > 0) {
-                    maxQuantity = result;
-                    quantityInput.max = maxQuantity;
-                    addButton.disabled = false;
-                    btnByNow.disabled = false;
-                } else {
-                    maxQuantity = 0;
-                    errorQuantity.innerHTML = `<div class="alert-danger" role="alert">Sản phẩm đã hết hàng!</div>`;
-                    addButton.disabled = true;
-                    btnByNow.disabled = true;
-                }
-            }
-        };
-        xhttp.open("GET", "check_quantity.php?id=" + e.target.id, true);
-        xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        xhttp.send();
-    }
-</script>

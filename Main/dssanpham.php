@@ -8,7 +8,7 @@
     $stringSQL = "SELECT * FROM `sanpham` WHERE `ten_sanpham` LIKE '%$search%' ORDER BY `ngaytao` DESC";
     $result = mysqli_query($connect, $stringSQL);
 ?>
-<div class="_home-outline2">
+<div class="_home-outline3">
     <div class="_dm-head">
         <div class="_sanpham_text">SẢN PHẨM</div>
     </div>
@@ -27,8 +27,7 @@
 
                         }
                     ?>
-                    "
-                         >
+                    ">
                 </div>
                 <div class="center-text">
                     <div class="_text-items2 max-line">
