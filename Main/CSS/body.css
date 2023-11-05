@@ -178,15 +178,16 @@ div{
     transform: translateY(-3px); /* Làm cho thẻ nổi lên một chút */
     transition: transform 0.3s ease; /* Thêm hiệu ứng chuyển động mềm dẻo */
 }
-._danhMuc{
+.bodysanpham{
     min-height: 50rem;
-    height: 200px
+    height: auto
 }
 ._dm-head
 {
     display: flex;
     align-items: center;
     height: 3.75rem;
+    margin-top:  1.25rem;
     background-color: white;
 }
 ._home-outline{
@@ -194,7 +195,7 @@ div{
     margin-top: 1.25rem;
     background-color: #fff;
 }
-._home-outline2{
+._home-outline3{
     min-height: 18.875rem;
     margin-top: 1.25rem;
     margin-bottom: 70px;
@@ -290,20 +291,20 @@ div{
     width: 93%;
     height: 3rem;
     text-align: left;
-    color: black;
-    font-size: 1.5rem;
+    font-size: 20px;
     font-family: Helvetica Neue;
-    padding-top: 7px;
+    padding-top: 9px;
     padding-left: 7px;
     padding-right: 7px;
     color: #cc0621;
 }
 
 .max-line{
-    max-height: 2.4em; /* Khoảng cao tối đa tương đương với 2 dòng văn bản (khoảng 1.2em cho mỗi dòng) */
+    max-height: 2.4em;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
 }
 ._danhMuc-items{
     width: 75px;
@@ -546,8 +547,6 @@ div{
 #radio5:checked ~.navigation-auto .auto-btn-5{
     background:  #cc0621;
 }
-
-
 
 
 

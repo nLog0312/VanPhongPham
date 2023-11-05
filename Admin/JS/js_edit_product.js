@@ -59,12 +59,12 @@ inputFile?.addEventListener('change', getImg);
 //#endregion
 
 //#region handle product properties
-const inputRadios = document.querySelectorAll('.dropdown-menu input[type="radio"]'); 
-const dpBtn = document.getElementById('multiSelectDropdown'); 
+const inputRadios = document.querySelectorAll('.dropdown-menu input[type="radio"]');
+const dpBtn = document.getElementById('multiSelectDropdown');
 
 function handleRaB() {
     dpBtn.innerText = '';
-    dpBtn.innerText = this.parentElement.querySelector('span').innerText;
+    dpBtn.innerText = this.parentElement.querySelector('span').innerText.trim();
 }
 
 inputRadios.forEach(input => {
@@ -72,7 +72,7 @@ inputRadios.forEach(input => {
 });
 //#endregion
 
-//#region onchange input image form insert detail
+//#region onchange input image form insert product
 const inputImages = document.querySelector('#editModal #imgProduct');
 const imgPreviewParent = document.querySelector('#editModal .image-product-edit .overflow-auto');
 
@@ -96,7 +96,7 @@ inputImages?.addEventListener('input', function() {
     }
 })
 //#endregion
-//#region change input file image form insert detail
+//#region change input file image form insert product
 const inputFileParent = document.querySelector('#editModal input[type="file"]');
 
 function getImgParent(event){

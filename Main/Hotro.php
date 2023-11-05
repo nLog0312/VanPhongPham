@@ -24,34 +24,48 @@
     <div class="hotro-war2">
         <div style="margin-bottom: 30px">
             <div class="header-question-hotro">Câu hỏi thường gặp</div>
-                <table>
-                    <tr>
-                        <td>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="inf-question-hotro">
-                            Làm sao để liên hệ Chăm sóc khách hàng?
-                        </td>
-                    </tr>
-                   <tr>
-                       <td class="inf-question-hotro">
-                           Mua đồ ở Hoàng Hà Stationery liệu có uy tín không?
-                       </td>
-                   </tr>
-                </table>
+            <div class="question" onclick="chuyenhuongCSKH()">
+                <div class="question-text">
+                    Cách xử lý khi hệ thống không thể xác minh tài khoản Shopee của tôi để đăng nhập? Tại sao hệ thống không thể xác minh được yêu cầu đăng nhập của tôi?
+                </div>
+            </div>
+            <div class="question" onclick="chuyenhuongCSBM()">
+                <div class="question-text">
+                    CHÍNH SÁCH BẢO MẬT
+                </div>
             </div>
 
-        <div style="margin-bottom: 30px">
-            <div class="header-question-hotro">Ý kiến đóng góp của khách hàng</div>
+
+            <div style="margin-bottom: 30px">
+
+                <div class="header-question-hotro">Ý kiến đóng góp của khách hàng</div>
                 <div class="from-donggop">
                     <textarea id="feedback" name="feedback" class="input-donggopykien" rows="5" cols="50"></textarea>
                 </div>
+                <div class="error-message" id="error-message"></div>
+                <div class="success-message" id="success-message"></div>
                 <div class="btn-donggop">
-                    <button type="submit" class="gui-y-kien">Gửi ý kiến đóng góp</button>
+                    <button type="button" class="gui-y-kien" onclick="validateFeedback()">Gửi ý kiến đóng góp</button>
                 </div>
-        </div>
+                <script>
+                    function validateFeedback() {
+                        var feedback = document.getElementById("feedback").value;
+                        var errorMessage = document.getElementById("error-message");
+                        var successMessage = document.getElementById("success-message");
+
+                        if (feedback.trim() === "") {
+                            errorMessage.textContent = "Hãy nhập ý kiến của bạn trước khi gửi!";
+                            errorMessage.style.display = "block";
+                            successMessage.style.display = "none";
+                        } else {
+                            errorMessage.style.display = "none";
+                            successMessage.textContent = "Cảm ơn bạn đã gửi ý kiến";
+                            successMessage.style.display = "block";
+                            // Đoạn code sau này có thể sử dụng để gửi dữ liệu đến máy chủ hoặc xử lý ý kiến đóng góp
+                            // Ví dụ: gửiAjax(feedback);
+                        }
+                    }
+                </script>
         <div class="footer-hotro">
             <div class="inf-footer-hotro">
                 <div class="inf-title-footer">
@@ -83,3 +97,11 @@
         </div>
     </div>
 
+<script>
+    function chuyenhuongCSKH() {
+        window.location.href = 'lienheCSKH.php';
+    }
+    function chuyenhuongCSBM() {
+        window.location.href = 'CSBM.php';
+    }
+</script>
