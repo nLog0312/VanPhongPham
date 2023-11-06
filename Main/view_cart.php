@@ -25,8 +25,8 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <div class="sticky-top">
-    <div class="navbar _header1">
-        <nav class="container navbar">
+    <div class="_header1">
+        <nav class="container-header">
             <div class="flex v-center">
                 <div style="margin-top: 2px; margin-bottom: 2px">
                     <a class="text-color-white-ha hover">Hotline: 0999.999.999 </a>
@@ -49,10 +49,10 @@
             </div>
             <ul class="flex v-center">
                 <a class="text-color-white-ha hover" style="cursor: pointer" onclick="chuyenHuong3()">
-                    <span class="notification ">
+                    <span>
                         <i class="fas fa-question-circle"></i>
                     </span>
-                    Hỗ trợ
+                    Liên hệ
                 </a>
             </ul>
             <?php
