@@ -28,7 +28,7 @@
 
             <ul class="flex v-center"">
                 <a class="text-color-white-ha hover" style="cursor: pointer;" onclick="chuyenHuong3()">
-                    <span class="notification ">
+                    <span>
                         <i class="fas fa-question-circle"></i>
                     </span>
                     Liên hệ
@@ -45,7 +45,7 @@
                         <?php if (isset($_SESSION['admin'])) {?>
                         <li><a class="dropdown-item" href="../Admin/index.php">Trang Admin</a></li>
                         <?php } ?>
-                        <li><a class="dropdown-item" href="#">Thông tin cá nhân</a></li>
+                        <li><a class="dropdown-item" href="User_Infor.php">Thông tin cá nhân</a></li>
                         <li><a class="dropdown-item" href="logout.php">Đăng xuất</a></li>
                     </ul>
                 </div>
