@@ -1,7 +1,8 @@
 body {
-    font-family: 'Helvetica'
+    font-family: 'Helvetica Neue';
 }
 ._header1{
+    display: flex;
     background-color: #cc0621;
     height: 35px;
     align-items: center;
@@ -10,9 +11,8 @@ body {
 ._header2{
     background-color: #cc0621;
     height: 80px;
-    width: 100%;
 }
-.sticky-top {
+.sticky-top2 {
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -62,8 +62,11 @@ body {
     width: 870px;
 }
 .v-center{
-    display: flex;
     align-items: center;
+    margin: 0;
+}
+.dropdown{
+    margin-left: 10px;
 }
 .size-hotline{
     font-size: 13px;
@@ -73,17 +76,16 @@ body {
     text-align: right;
 
 }
-.container {
+.container-header{
+    display: flex;
     margin-right: auto;
     margin-left: auto;
     width: 1200px;
-}
-.navbar {
-    display: flex;
     align-items: center;
     justify-content: center;
 }
-.container-fluid{
+
+.container-fluid2{
     display: flex;
     flex-wrap: inherit;
     margin-right: auto;
@@ -109,8 +111,10 @@ body {
     background-color: #fff;
     border-radius: 3px;
 }
-._search-img{
+._search-img2{
     position: relative;
+    width: 170px;
+    height: 45px;
 }
 .input-search {
     margin-left: 10px;
@@ -146,6 +150,7 @@ button:hover {
     font-size: 14px;
 }
 .linked{
+    text-decoration: none;
     margin-left: 6px;
 }
 .hover:hover{
@@ -157,7 +162,12 @@ button:hover {
     opacity: 50%;
 }
 ._gioHang{
-   font-size: 25px;
+    width: 29px;
+    height: 29px;
+   font-size: 23px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 ._btn-gioHang{
     display: flex;
@@ -165,6 +175,7 @@ button:hover {
     justify-content: center;
     align-items: center;
     color: #fff;
+    margin: 0;
 }
 .navbar__spacer {
      flex: 1;
@@ -189,11 +200,11 @@ button:hover {
 ._taskbar-items{
     width: 50px;
 }
-.logo {
+.logo2 {
     width: 170px;
     height: 45px;
-    padding: 5px;
     align-items: center;
+    display: flex;
 }
 
 

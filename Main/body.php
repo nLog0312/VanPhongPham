@@ -3,15 +3,19 @@
 </style>
 <div class="section-banner-hotword--no-skin">
     <div class="event_shop">
-        <div class="container">
+        <div class="container-banner">
             <div class="full-home">
                 <div class="main-banner">
                     <div class="slider">
                         <div class="btn-prev">
-                            <div class="prev-icon"><</div>
+                            <div class="prev-icon">
+                                <i class="fa-solid fa-angle-left"></i>
+                            </div>
                         </div>
                         <div class="btn-next">
-                            <div class="next-icon">></div>
+                            <div class="next-icon">
+                                <i class="fa-solid fa-angle-right"></i>
+                            </div>
                         </div>
                         <div class="slides">
                             <input type="radio" name="radio-btn" id="radio1">
