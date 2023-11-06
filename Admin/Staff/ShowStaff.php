@@ -2,7 +2,12 @@
     require_once './ShareAdmin/root/connect.php';
 
     // select all product
-    $stringSQL = "SELECT * FROM `customers` WHERE `name` LIKE '%$search%' ORDER BY `createdDate` DESC";
+    
+    if ($_SESSION['user']['role'] == 1) {
+        $stringSQL = "SELECT * FROM `accounts` WHERE `name` LIKE '%$search%' AND `role` = 2";
+    } elseif ($_SESSION['user']['role'] == 0) {
+        $stringSQL = "SELECT * FROM `accounts` WHERE `name` LIKE '%$search%'";
+    }
 
     $result = mysqli_query($connect, $stringSQL);
 
@@ -14,17 +19,16 @@
                         <span>$index</span>
                 </td>";
                 echo "<td>" . ($each['name']) . "</td>";
-            if ($each['email'] != null) {
-                echo "<td style='width: 25%'>" . ($each['email']) . "</td>";
-            } else {
-                echo "<td style='width: 25%'>" . ($each['phone']) . "</td>";
-            }
-            if ($each['address'] != null && strlen($each['address']) > 50) {
-                echo "<td style='width: 25%'>" . substr($each['address'], 0, 50) . "...</td>";
-            } else {
-                echo "<td style='width: 25%'>" . ($each['address']) . "</td>";
-
-            }
+                echo "<td class='text-center' style='width: 15%'>" . ($each['phone']) . "</td>";
+                echo "<td class='text-center' style='width: 10%'>" . date("d/m/Y", strtotime($each['dob'])) . "</td>";
+                echo "<td class='text-start'>" . ($each['address']) . "</td>";
+                if ($each['role'] == 1) {
+                    echo "<td class='text-center' style='width: 10%'>Quản lý</td>";
+                } elseif ($each['role'] == 2) {
+                    echo "<td class='text-center' style='width: 10%'>Nhân viên</td>";
+                } else {
+                    echo "<td class='text-center' style='width: 10%'>Quản trị</td>";
+                }
                 echo "<td class='text-center'>
                         <div class='dropdown'>
                             <a class='btn dropdown-toggle' href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
@@ -32,9 +36,15 @@
                             </a>
                             <ul class='dropdown-menu'>
                                 <li class='d-flex align-items-center'>
-                                    <a href='ViewDetailCustomer.php?id=" . $each['customerID'] . "' class='dropdown-item d-flex align-items-center fs-5'>
-                                        <ion-icon name='eye-outline'></ion-icon>
-                                        <span class='ms-4'>Xem chi tiết</spam>
+                                    <a href='EditStaff.php?id=" . $each['id'] . "' class='dropdown-item d-flex align-items-center fs-5'>
+                                        <ion-icon name='create-outline'></ion-icon>
+                                        <span class='ms-4'>Sửa</spam>
+                                    </a>
+                                </li>
+                                <li class='d-flex align-items-center'>
+                                    <a href='DeleteStaff.php?id=" . $each['id'] . "' class='dropdown-item d-flex align-items-center fs-5'>
+                                        <ion-icon name='trash-outline'></ion-icon>
+                                        <span class='ms-4'>Xoá</spam>
                                     </a>
                                 </li>
                             </ul>
@@ -44,6 +54,6 @@
         }
     } else {
         echo "<tr>
-                <td colspan='5' class='text-center'>Không có khách hàng nào!</td>
+                <td colspan='7' class='text-center'>Không có nhân viên nào</td>
             </tr>";
     }
