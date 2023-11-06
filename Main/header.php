@@ -4,11 +4,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 <title>Hoàng Hà Stationery</title>
-<div class="sticky-top">
-    <div class="navbar navbar-expand-sm _header1">
-        <nav class="container navbar">
+<div class="sticky-top2">
+    <div class="_header1">
+        <nav class="container-header">
             <div class="flex v-center">
-                <div style="margin-top: 2px; margin-bottom: 2px">
+                <div>
                     <a class="text-color-white-ha hover">Hotline: 0999.999.999 </a>
                     <span class="_span-space text-color-white-ga">|</span>
                     <a class="text-color-white-ha hover">
@@ -23,16 +23,15 @@
                         <i class ="fab fa-instagram text-color-white-ha"></i>
                     </a>
                 </div>
-
             </div>
             <div class="navbar__spacer"></div>
 
-            <ul class="flex v-center me-4" style="margin-bottom: 0;">
-                <a class="text-color-white-ha hover" style="cursor: pointer" onclick="chuyenHuong3()">
+            <ul class="flex v-center"">
+                <a class="text-color-white-ha hover" style="cursor: pointer;" onclick="chuyenHuong3()">
                     <span class="notification ">
                         <i class="fas fa-question-circle"></i>
                     </span>
-                    Hỗ trợ
+                    Liên hệ
                 </a>
             </ul>
             <?php
@@ -53,7 +52,7 @@
             <?php
                 } else {
             ?>
-                <ul class=" flex v-center" style="margin-bottom: 0;">
+                <ul class=" flex v-center">
                     <a class="text-color-white-ha hover" href="#register" onclick="chuyenHuong()">Đăng ký</a>
                     <span class="_span-space text-color-white-ga">|</span>
                     <a class="text-color-white-ha hover" href="#login" onclick="chuyenHuong2()">Đăng nhập</a>
@@ -63,11 +62,11 @@
     </div>
 
     <div class="navbar navbar-expand-sm _header2">
-    <div class="container-fluid">
+    <div class="container-fluid2">
             <div class="_container-center">
-                <div class="_search-img">
+                <div class="_search-img2">
                     <a href="index.php">
-                        <img class="logo" src="picture/logoHH.png" alt="Logo"/>
+                        <img class="logo2" src="picture/logoHH.png" alt="Logo"/>
                     </a>
                 </div>
                 <div class="in-thanh-sp">
@@ -96,7 +95,7 @@
 
                 </div>
                 <div class="_btn-gioHang">
-                    <a href="#" class="cart-icon text-color-white _gioHang hover" onclick="chuyenHuong4()">
+                    <a href="#" class="text-color-white _gioHang hover" onclick="chuyenHuong4()">
                         <i class="fas fa-shopping-cart"></i>
                     </a>
                 </div>
