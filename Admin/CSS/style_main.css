@@ -613,3 +613,7 @@ ion-icon {
     max-height: 10rem;
     overflow-y: auto;
 }
+
+.admin-profile .dropdown-toggle::after {
+    content: none !important;
+}
