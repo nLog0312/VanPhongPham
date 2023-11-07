@@ -1,6 +1,11 @@
 <?php
     session_start();
     require_once './connect/connect.php';
+    if (!isset($_POST['email']) || !isset($_POST['password']) || !isset($_POST['repassword']) || empty($_POST['email']) || empty($_POST['password']) || empty($_POST['repassword'])) {
+        $_SESSION['toast-error'] = "Đăng ký thất bại. Vui lòng nhập đầy đủ thông tin!";
+        header("Location: ./Register.php");
+        die();
+    }
     $email = $_POST['email'];
     $password = $_POST['password'];
     $repassword = $_POST['repassword'];
