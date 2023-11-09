@@ -66,7 +66,7 @@
                 <?php
                     } else {
                 ?>
-                    <ul class=" flex v-center">
+                    <ul class="flex v-center">
                         <a class="text-color-white-ha hover" href="#register" onclick="chuyenHuong()">Đăng ký</a>
                         <span class="_span-space text-color-white-ga">|</span>
                         <a class="text-color-white-ha hover" href="#login" onclick="chuyenHuong2()">Đăng nhập</a>
