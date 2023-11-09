@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    showContent('info1');
+    showContent('info3');
 });
 
 function showContent(id) {
