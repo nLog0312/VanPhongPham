@@ -194,6 +194,7 @@
                         </div>
                     </div>
                     <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="../Main/index.php" target="_blank">Trang Bán Hàng</a></li>
                         <li><a class="dropdown-item" href="../Main/logout.php">Thoát</a></li>
                     </ul>
                 </div>
