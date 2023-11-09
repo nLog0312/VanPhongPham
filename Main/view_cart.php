@@ -182,7 +182,7 @@
                             100.000 VND
                         </div>
                 <div>
-                    <button class="btn-muahang">Mua hàng</button>
+                    <button class="btn-muahang" onclick="chuyenhuongMua()">Mua hàng</button>
                 </div>
             </div>
         </div>
@@ -191,6 +191,9 @@
 </div>
 <script>
     <?php include 'script_giohang.js' ?>
+    function chuyenhuongMua() {
+        window.location.href = 'thanhtoan.php';
+    }
 </script>
 <?php
 include('Footer.php');
