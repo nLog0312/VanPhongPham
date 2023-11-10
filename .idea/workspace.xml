@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="40c4ff23-55f7-4783-949d-40708abb017d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/CSS/user_inf.css" beforeDir="false" afterPath="$PROJECT_DIR$/Main/CSS/user_inf.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/Main/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/CSS/Product.css" beforeDir="false" afterPath="$PROJECT_DIR$/Main/CSS/Product.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/product.php" beforeDir="false" afterPath="$PROJECT_DIR$/Main/product.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main/view_cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/Main/view_cart.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,6 +72,7 @@
       <workItem from="1699203360644" duration="114000" />
       <workItem from="1699250713414" duration="11924000" />
       <workItem from="1699282139796" duration="5703000" />
+      <workItem from="1699580294096" duration="766000" />
     </task>
     <servers />
   </component>
@@ -95,6 +96,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/Main/product.php</url>
+          <line>3</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
