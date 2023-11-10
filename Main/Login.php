@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hoàng Hà Stationery</title>
+    <link rel = "icon" href="picture/logo-web.png" type="image/x-icon">
     <style>
         <?php include 'CSS/Register.css' ?>
     </style>
@@ -79,6 +80,7 @@
                         <input name="email" type="text" placeholder="Nhập email/số điện thoại">
                         <input name="password" type="password" placeholder="Nhập mật khẩu">
                         <input type="submit" class="button" value="Đăng nhập">
+                        <input type="checkbox"> <span class="remember">Nhớ mật khẩu</span>
                     </form>
                     <div class="signup">
                         <span class="signup">Không có tài khoản?

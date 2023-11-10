@@ -29,50 +29,17 @@
     }
 
     // check have delivery address
-    $stringSQL = "SELECT COUNT(*) FROM `diachi_nhanhang` WHERE `customerID`='$id' AND `macdinh`='1'";
+    $stringSQL = "SELECT COUNT(*) FROM `diachi_nhanhang` WHERE `customerID`='$id' AND `macdinh`=1";
     $resultDiaChiMacDinh = mysqli_query($connect, $stringSQL);
     $number_of_rows_DiaChi = mysqli_fetch_array($resultDiaChiMacDinh)['COUNT(*)'];
-?>
 
-<div class="toast-container position-fixed p-3" style="top: 80px; right: 50px;">
-    <div id="liveToastInfo" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-            <?php
-                if (isset($_SESSION['toast-success-info'])) {
-                    echo '<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" xml:space="preserve" width="24px" height="24px" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle style="fill:#25AE88;" cx="25" cy="25" r="25"></circle> <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" points=" 38,15 22,33 12,25 "></polyline> </g></svg>';
-                    echo '<strong class="ms-2 me-auto">Thông báo</strong>';
-                }
-                if (isset($_SESSION['toast-error-info'])) {
-                    echo '<svg fill="#ff0000" width="24px" height="24px" viewBox="0 -8 528 528" xmlns="http://www.w3.org/2000/svg" stroke="#ff0000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title>fail</title><path d="M264 456Q210 456 164 429 118 402 91 356 64 310 64 256 64 202 91 156 118 110 164 83 210 56 264 56 318 56 364 83 410 110 437 156 464 202 464 256 464 310 437 356 410 402 364 429 318 456 264 456ZM264 288L328 352 360 320 296 256 360 192 328 160 264 224 200 160 168 192 232 256 168 320 200 352 264 288Z"></path></g></svg>';
-                    echo '<strong class="ms-2 me-auto">Lỗi</strong>';
-                }
-            ?>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        <div class="toast-body">
-            <?php
-                if (isset($_SESSION['toast-success-info'])) {
-                    echo $_SESSION['toast-success-info'];
-                    unset($_SESSION['toast-success-info']);
-                    echo '<script>
-                            var toastLive = document.getElementById("liveToastInfo")
-                            var toast = new bootstrap.Toast(toastLive)
-                            toast.show()
-                        </script>';
-                }
-                if (isset($_SESSION['toast-error-info'])) {
-                    echo $_SESSION['toast-error-info'];
-                    unset($_SESSION['toast-error-info']);
-                    echo '<script>
-                            var toastLive = document.getElementById("liveToastInfo")
-                            var toast = new bootstrap.Toast(toastLive)
-                            toast.show()
-                        </script>';
-                }
-            ?>
-        </div>
-    </div>
-</div>
+    // get delivery address
+    $idAddress = $_GET['id'];
+    $stringSQL = "SELECT * FROM `diachi_nhanhang` WHERE `id`='$idAddress'";
+    $resultDiaChi = mysqli_query($connect, $stringSQL);
+    
+    $eachDiaChi = mysqli_fetch_array($resultDiaChi);
+?>
 
 <div style="background-color: #F7F7F7; min-height: 30rem;">
     <div class="container-user">
@@ -284,175 +251,71 @@
     </div>
 </div>
 
-<!-- Modal Name -->
-<div class="modal fade" id="changeName" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="changeNameLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form action="process_update_name.php?id=<?php echo isset($_SESSION['user']['role']) ? $_SESSION['user']['id'] : $_SESSION['user']['customerID']; ?>" method="post">
-                <input type="text" name="role" hidden value="<?php echo isset($_SESSION['user']['role']) ? $_SESSION['user']['id'] : null; ?>">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel"><?php echo empty($each['name']) ? 'Thêm tên' : 'Thay đổi tên'?></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                <?php if (!empty($each['name'])) {?>
-                    <label class="fs-5 form-label">Họ tên cũ: </label>
-                    <span class="ms-2 fs-4"> <?php echo $each['name']; ?></span>
-                    <br>
-                    <label class="fs-5 form-label">Họ tên mới: </label>
-                <?php } else {?>
-                    <label class="fs-5 form-label">Nhập họ tên: </label>
-                <?php }?>
-                    <input type="text" class="form-control" id="newName" name="newName" placeholder="<?php echo empty($each['name']) ? 'Nhập họ tên' : 'Nhập họ tên mới'?>">
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Lưu</button>
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Đóng</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Email -->
-<?php if (isset($each['email'])) {?>
-<div class="modal fade" id="changeEmail" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="changeEmailLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form action="process_update_email.php?id=<?php echo isset($_SESSION['user']['role']) ? $_SESSION['user']['id'] : $_SESSION['user']['customerID']; ?>" method="post">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel"><?php echo empty($each['email']) ? 'Thêm email' : 'Thay đổi email'?></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                <?php if (!empty($each['email'])) {?>
-                    <label class="fs-5 form-label">Email cũ: </label>
-                    <span class="ms-2 fs-4"> <?php echo $each['email']; ?></span>
-                    <br>
-                    <label class="fs-5 form-label">Email mới: </label>
-                <?php } else {?>
-                    <label class="fs-5 form-label">Nhập email: </label>
-                <?php }?>
-                    <input type="email" class="form-control" id="newEmail" name="newEmail" placeholder="<?php echo empty($each['email']) ? 'Nhập email' : 'Nhập email mới'?>">
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Lưu</button>
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Đóng</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<?php }?>
-
-<!-- Modal Phone -->
-<div class="modal fade" id="changePhone" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="changePhoneLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form action="process_update_phone.php?id=<?php echo isset($_SESSION['user']['role']) ? $_SESSION['user']['id'] : $_SESSION['user']['customerID']; ?>" method="post">
-                <input type="text" name="role" hidden value="<?php echo isset($_SESSION['user']['role']) ? $_SESSION['user']['id'] : null; ?>">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel"><?php echo empty($each['phone']) ? 'Thêm số điện thoại' : 'Thay đổi số điện thoại'?></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                <?php if (!empty($each['phone'])) {?>
-                    <label class="fs-5 form-label">Số điện thoại cũ: </label>
-                    <span class="ms-2 fs-4"> <?php echo $each['phone']; ?></span>
-                    <br>
-                    <label class="fs-5 form-label">Số điện thoại mới: </label>
-                <?php } else {?>
-                    <label class="fs-5 form-label">Nhập số điện thoại: </label>
-                <?php }?>
-                    <input type="number" class="form-control" id="newPhone" name="newPhone" placeholder="<?php echo empty($each['phone']) ? 'Nhập số điện thoại' : 'Nhập số điện thoại mới'?>">
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Lưu</button>
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Đóng</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Address -->
-<div class="modal fade" id="changeAddress" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="changeAddressLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form action="process_update_address.php?id=<?php echo isset($_SESSION['user']['role']) ? $_SESSION['user']['id'] : $_SESSION['user']['customerID']; ?>" method="post">
-                <input type="text" name="role" hidden value="<?php echo isset($_SESSION['user']['role']) ? $_SESSION['user']['id'] : null; ?>">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel"><?php echo empty($each['address']) ? 'Thêm địa chỉ' : 'Thay đổi địa chỉ'?></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                <?php if (!empty($each['address'])) {?>
-                    <label class="fs-5 form-label">Địa chỉ cũ: </label>
-                    <span class="ms-2 fs-4"> <?php echo $_SESSION['user']['address']; ?></span>
-                    <br>
-                    <label class="fs-5 form-label">Địa chỉ mới: </label>
-                <?php } else {?>
-                    <label class="fs-5 form-label">Nhập địa chỉ: </label>
-                <?php }?>
-                    <input type="text" class="form-control" id="newAddress" name="newAddress" placeholder="<?php echo empty($each['address']) ? 'Nhập địa chỉ' : 'Nhập địa chỉ mới'?>">
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Lưu</button>
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Đóng</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
 <!-- Delivery Address -->
 <!-- Modal Add Address -->
-<div class="modal fade" id="addAddress" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addAddressLabel" aria-hidden="true">
+<div class="modal fade show" id="addAddress" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addAddressLabel" aria-modal="true" style="display: block; background: rgb(0,0,0,0.5);">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="process_add_delivery_address.php?id=<?php echo isset($_SESSION['user']['role']) ? $_SESSION['user']['id'] : $_SESSION['user']['customerID']; ?>" method="post">
+            <form action="process_update_delivery_address.php?idCustomer=<?php echo isset($_SESSION['user']['role']) ? $_SESSION['user']['id'] : $_SESSION['user']['customerID']; ?>&id=<?php echo $eachDiaChi['id'];?>" method="post">
                 <input type="text" name="role" hidden value="<?php echo isset($_SESSION['user']['role']) ? $_SESSION['user']['id'] : null; ?>">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Thêm địa chỉ nhận hàng</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Sửa địa chỉ nhận hàng</h1>
+                    <a href="User_Infor.php" style="text-decoration: none; color: #737373;">X</a>
                 </div>
                 <div class="modal-body">
                     <label class="fs-5 form-label">Họ tên: </label>
-                    <input type="text" class="form-control fs-6" id="deliveryName" name="deliveryName" placeholder="Nhập họ tên">
+                    <input type="text" class="form-control fs-6" id="deliveryName" value="<?php echo $eachDiaChi['ten_nguoinhan'];?>" name="deliveryName" placeholder="Nhập họ tên">
                     <br>
 
                     <label class="fs-5 form-label">Số điện thoại: </label>
-                    <input type="number" class="form-control fs-6" id="deliveryPhone" name="deliveryPhone" placeholder="Nhập số điện thoại">
+                    <input type="number" class="form-control fs-6" id="deliveryPhone" value="<?php echo $eachDiaChi['sdt_nguoinhan'];?>" name="deliveryPhone" placeholder="Nhập số điện thoại">
                     <br>
 
                     <label class="fs-5 form-label">Địa chỉ: </label>
-                    <input type="text" class="form-control fs-6" id="deliveryAddress" name="deliveryAddress" placeholder="Nhập địa chỉ">
+                    <input type="text" class="form-control fs-6" id="deliveryAddress" value="<?php echo $eachDiaChi['diachi'];?>" name="deliveryAddress" placeholder="Nhập địa chỉ">
                     <br>
 
                     <label class="fs-5 form-label">Tỉnh/Thành phố, Quận/Huyện, Xã/Phường: </label>
                     <div>
                         <select name="conscious" class="form-select form-select-sm mb-3 fs-6" id="city" aria-label=".form-select-sm">
-                            <option value="" selected>Chọn tỉnh thành</option>
+                        <?php
+                            if ($eachDiaChi['tinh'] != '') {
+                                echo '<option value="' . $eachDiaChi['tinh'] . '" selected>' . $eachDiaChi['tinh'] . '</option>';
+                            } else {
+                                echo '<option value="" selected>Chọn tỉnh thành</option>';
+                            }
+                        ?>
                         </select>
                         
                         <select name="district" class="form-select form-select-sm mb-3 fs-6" id="district" aria-label=".form-select-sm">
-                            <option value="" selected>Chọn quận huyện</option>
+                        <?php
+                            if ($eachDiaChi['huyen'] != '') {
+                                echo '<option value="' . $eachDiaChi['huyen'] . '" selected>' . $eachDiaChi['huyen'] . '</option>';
+                            } else {
+                                echo '<option value="" selected>Chọn quận huyện</option>';
+                            }
+                        ?>
                         </select>
 
                         <select name="wards" class="form-select form-select-sm fs-6" id="ward" aria-label=".form-select-sm">
-                            <option value="" selected>Chọn phường xã</option>
+                        <?php
+                            if ($eachDiaChi['xa'] != '') {
+                                echo '<option value="' . $eachDiaChi['xa'] . '" selected>' . $eachDiaChi['xa'] . '</option>';
+                            } else {
+                                echo '<option value="" selected>Chọn phường xã</option>';
+                            }
+                        ?>
                         </select>
                     </div>
                     <br>
 
-                <?php if ($number_of_rows_DiaChi > 0) {?>
+                <?php if ($number_of_rows_DiaChi > 0 && $eachDiaChi['macdinh'] == 0) {?>
                     <input type="checkbox" name="setDefault">
                     <label class="fs-6 form-label">Đặt làm địa chỉ mặc định</label>
                 <?php }?>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Lưu</button>
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Đóng</button>
                 </div>
             </form>
         </div>

@@ -2,6 +2,7 @@
     session_start();
     require_once "./connect/connect.php";
     $id = $_GET['id'];
+    $idCustomer = $_GET['idCustomer'];
     $role = $_POST['role'];
     if ($role != null && isset($_SESSION['user'])) {
         header("Location: ./Login.php");
@@ -26,31 +27,25 @@
     $conscious = $_POST["conscious"];
     $district = $_POST["district"];
     $wards = $_POST["wards"];
-    $setDefault = 0;
-    
-    $stringSQL = "SELECT COUNT(*) FROM `diachi_nhanhang` WHERE `customerID`='$id' AND `macdinh`=1";
-    $resultCountDiaChi = mysqli_query($connect, $stringSQL);
-    $number_of_rows_DiaChi = mysqli_fetch_array($resultCountDiaChi)['COUNT(*)'];
-    if ($number_of_rows_DiaChi == 0) {
-        $setDefault = 1;
-    }
+    $create_date = date("Y-m-d H:i:s");
 
     if (isset($_POST["setDefault"])) {
-        $sqlDefault = "UPDATE `diachi_nhanhang` SET `macdinh`= 0 WHERE `customerID`='$id'";
+        $sqlDefault = "UPDATE `diachi_nhanhang` SET `macdinh`= 0 WHERE `customerID`='$idCustomer'";
         $result = mysqli_query($connect, $sqlDefault);
 
         $setDefault = 1;
+        $stringSQL = "UPDATE `diachi_nhanhang` SET `ten_nguoinhan`='$deliveryName', `sdt_nguoinhan`='$deliveryPhone', `diachi`='$deliveryAddress', `tinh`='$conscious', `huyen`='$district', `xa`='$wards', `macdinh`=$setDefault, `ngaytao`='$create_date' WHERE `customerID`='$idCustomer' AND `id`='$id'";
+    } else {
+        $stringSQL = "UPDATE `diachi_nhanhang` SET `ten_nguoinhan`='$deliveryName', `sdt_nguoinhan`='$deliveryPhone', `diachi`='$deliveryAddress', `tinh`='$conscious', `huyen`='$district', `xa`='$wards', `ngaytao`='$create_date' WHERE `customerID`='$idCustomer' AND `id`='$id'";
     }
-    $create_date = date("Y-m-d H:i:s");
 
-    $stringSQL = "INSERT INTO `diachi_nhanhang`(`customerID`, `ten_nguoinhan`, `sdt_nguoinhan`, `diachi`, `tinh`, `huyen`, `xa`, `macdinh`, `ngaytao`) VALUES ('$id','$deliveryName','$deliveryPhone','$deliveryAddress','$conscious','$district','$wards',$setDefault, '$create_date')";
     $result = mysqli_query($connect, $stringSQL);
     if ($result) {
-        $_SESSION["toast-success-info"] = "Thêm địa chỉ nhận hàng thành công";
+        $_SESSION["toast-success-info"] = "Cập nhật địa chỉ nhận hàng thành công";
         header("Location: ./User_Infor.php");
         die();
     } else {
-        $_SESSION["toast-error-info"] = "Thêm địa chỉ nhận hàng thất bại";
+        $_SESSION["toast-error-info"] = "Cập nhật địa chỉ nhận hàng thất bại";
         header("Location: ./User_Infor.php");
         die();
     }
