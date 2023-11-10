@@ -1,12 +1,14 @@
 <?php
     session_start();
-    if (!isset($_SESSION['user'])){
-        header('Location: Login.php');
-    }
 
     $search = "";
     if (isset($_GET['search'])) {
         $search = $_GET['search'];
+    }
+
+    $limit = 12;
+    if (isset($_GET['limit'])) {
+        $limit = $_GET['limit'];
     }
 ?>
 <!DOCTYPE html>
@@ -23,7 +25,6 @@
     <title>Hoàng Hà Stationery</title>
 </head>
 <body>
-    
     <div class="toast-container position-fixed p-3" style="top: 80px; right: 50px;">
         <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header">
@@ -86,7 +87,7 @@
                 <div class="navbar__spacer"></div>
 
                 <ul class="flex v-center"">
-                    <a class="text-color-white-ha hover" style="cursor: pointer;" onclick="chuyenHuong3()">
+                    <a class="text-color-white-ha hover" href="Hotro.php" style="cursor: pointer;">
                         <span>
                             <i class="fas fa-question-circle"></i>
                         </span>
@@ -115,9 +116,9 @@
                     } else {
                 ?>
                     <ul class="flex v-center">
-                        <a class="text-color-white-ha hover" href="#register" onclick="chuyenHuong()">Đăng ký</a>
+                        <a class="text-color-white-ha hover" href="Register.php">Đăng ký</a>
                         <span class="_span-space text-color-white-ga">|</span>
-                        <a class="text-color-white-ha hover" href="#login" onclick="chuyenHuong2()">Đăng nhập</a>
+                        <a class="text-color-white-ha hover" href="Login.php">Đăng nhập</a>
                     </ul>
                 <?php }?>
             </nav>
@@ -132,32 +133,34 @@
                         </a>
                     </div>
                     <div class="in-thanh-sp">
+                        <form>
                             <div class="thanh_sp_header">
-                                    <input name="inputSearch" value="<?php echo $search?>" type="text" class="input-search" placeholder="Nhập tìm kiếm...">
-                                    <div class="khung-button">
-                                        <button class="button-search">
-                                            <i class="fa fa-search text-color-white-ha"></i>
-                                        </button>
-                                    </div>
+                                <input name="search" value="<?php echo $search?>" type="text" class="input-search" placeholder="Nhập tìm kiếm...">
+                                <div class="khung-button">
+                                    <button class="button-search">
+                                        <i class="fa fa-search text-color-white-ha"></i>
+                                    </button>
+                                </div>
                             </div>
+                        </form>
 
                             <div class="link_sp_header">
-                                <a class="_search-text hover" href="index.php">Giấy A4</a>
-                                <a class="_search-text hover" href="index.php">Kẹp sách</a>
-                                <a class="_search-text hover" href="index.php">Bút các loại</a>
-                                <a class="_search-text hover" href="index.php">Mực</a>
-                                <a class="_search-text hover" href="index.php">Ghim</a>
-                                <a class="_search-text hover" href="index.php">Máy tính</a>
-                                <a class="_search-text hover" href="index.php">Ghế</a>
-                                <a class="_search-text hover" href="index.php">Bàn</a>
-                                <a class="_search-text hover" href="index.php">Giá sách</a>
-                                <a class="_search-text hover" href="index.php">Túi vải</a>
-                                <a class="_search-text hover" href="index.php">Cặp</a>
+                                <a class="_search-text hover" href="index.php?search=giấy">Giấy A4</a>
+                                <a class="_search-text hover" href="index.php?search=kẹp sách">Kẹp sách</a>
+                                <a class="_search-text hover" href="index.php?search=bút">Bút các loại</a>
+                                <a class="_search-text hover" href="index.php?search=mực">Mực</a>
+                                <a class="_search-text hover" href="index.php?search=ghim">Ghim</a>
+                                <a class="_search-text hover" href="index.php?search=máy tính">Máy tính</a>
+                                <a class="_search-text hover" href="index.php?search=ghế">Ghế</a>
+                                <a class="_search-text hover" href="index.php?search=bàn">Bàn</a>
+                                <a class="_search-text hover" href="index.php?search=giá sách">Giá sách</a>
+                                <a class="_search-text hover" href="index.php?search=túi vải">Túi vải</a>
+                                <a class="_search-text hover" href="index.php?search=cặp">Cặp</a>
                             </div>
 
                     </div>
                     <div class="_btn-gioHang">
-                        <a href="#" class="text-color-white _gioHang hover" onclick="chuyenHuong4()">
+                        <a href="view_cart.php" class="text-color-white _gioHang hover">
                             <i class="fas fa-shopping-cart"></i>
                         </a>
                     </div>
@@ -167,19 +170,5 @@
         </div>
         </nav>
     </div>
-    <script type="text/javascript">
-        function chuyenHuong2() {
-            window.location.href = 'Login.php';
-        }
-        function chuyenHuong() {
-            window.location.href = 'Register.php';
-        }
-        function chuyenHuong3() {
-            window.location.href = 'Hotro.php';
-        }
-        function chuyenHuong4() {
-            window.location.href = 'view_cart.php';
-        }
-    </script>
 </body>
 </html>
