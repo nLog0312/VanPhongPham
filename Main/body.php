@@ -66,11 +66,8 @@
 
                 </div>
                 <div class="extra-right-banner">
-                    <a href="#banner2">
-                        <img class="war2" src="picture/1_5.jpg"/>
-                    </a>
-                    <a href="#banner3">
-                        <img class="war3" src="picture/1_2.jpg"/>
+                    <img class="war2" src="picture/1_5.jpg" alt="..."/>
+                    <img class="war3" src="picture/1_2.jpg" alt="..."/>
                     </a>
                 </div>
             </div>

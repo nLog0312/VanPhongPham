@@ -41,13 +41,17 @@
 </div>
 
 <section class="grid">
-    <article></article>
-    <article></article>
-    <article></article>
-    <article></article>
-    <article></article>
-    <article></article>
-    <article></article>
-    <article></article>
+    <article>
+        <img src="./IMG/1_6.jpg" alt="" srcset="" width="100%">
+    </article>
+    <article>
+        <img src="./IMG/1_2.jpg" alt="" srcset="" width="100%">
+    </article>
+    <article>
+        <img src="./IMG/1_5.jpg" alt="" srcset="" width="100%">
+    </article>
+    <article>
+        <img src="./IMG/1_4.png" alt="" srcset="" width="100%">
+    </article>
 </section>
 <?php include_once './ShareAdmin/footer.php'; ?>
