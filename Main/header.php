@@ -17,12 +17,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "icon" href="picture/logo-web.png" type="image/x-icon">
+    <title>Hoàng Hà Stationery</title>
     <style>
         <?php include 'CSS/header.css' ?>
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <title>Hoàng Hà Stationery</title>
 </head>
 <body>
     <div class="toast-container position-fixed p-3" style="top: 80px; right: 50px;">
