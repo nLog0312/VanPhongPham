@@ -14,6 +14,12 @@
             $_SESSION['admin'] = true;
             $_SESSION['user'] = $row;
             $_SESSION['toast-success'] = "Đăng nhập thành công";
+            if (isset($_POST['remember'])) {
+                $token = md5($row['id'] . $row['phone'] . $row['password']);
+                setcookie("token", $token, time() + 3600);
+                $sqlToken = "UPDATE `accounts` SET `token` = '$token' WHERE `id` = " . $row['id'];
+                mysqli_query($connect, $sqlToken);
+            }
             header("Location: ../Admin/index.php");
         } else {
             $_SESSION['toast-error'] = "Đăng nhập thất bại! Kiểm tra lại thông tin";
@@ -28,5 +34,11 @@
         $row = mysqli_fetch_array($result);
         $_SESSION['user'] = $row;
         $_SESSION['toast-success'] = "Đăng nhập thành công";
+        if (isset($_POST['remember'])) {
+            $token = md5($row['customerID'] . $row['phone'] . $row['password']);
+            setcookie("token", $token, time() + 3600);
+            $sqlToken = "UPDATE `customers` SET `token` = '$token' WHERE `customerID` = " . $row['customerID'];
+            mysqli_query($connect, $sqlToken);
+        }
         header("Location: ./index.php");
     }

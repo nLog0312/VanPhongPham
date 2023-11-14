@@ -1,16 +1,36 @@
 <style>
     <?php
-    session_start();
+        session_start();
         if (!isset($_SESSION['user'])){
             header('Location: Login.php');
+            die();
         }
-       include 'CSS/Login.css';
-       include 'CSS/cart.css';
-       include 'CSS/Hotro.css';
-       include 'CSS/header.css';
-       include 'CSS/Product.css';
-       include 'CSS/thanhToan.css'
-       ?>
+        include 'CSS/Login.css';
+        include 'CSS/cart.css';
+        include 'CSS/Hotro.css';
+        include 'CSS/header.css';
+        include 'CSS/Product.css';
+        include 'CSS/thanhToan.css';
+        
+        if (isset($_POST['productFromCart'])) {
+            $productFromCart = $_POST['productFromCart'];
+            $images = $_POST['images'];
+            $properties = $_POST['properties'];
+            $totalPrice = $_POST['totalPrice'];
+            $price = $_POST['price'];
+            $quantity = $_POST['quantity'];
+
+            echo json_encode($productFromCart);
+            echo json_encode($images);
+            echo json_encode($properties);
+            echo json_encode($price);
+            echo json_encode($quantity);
+        } else {
+            $_SESSION['toast-error'] = "Bạn chưa chọn sản phẩm nào!";
+            header('Location: view_cart.php');
+            die();
+        }
+    ?>
 </style>
 <?php
     require_once './connect/connect.php';
@@ -25,39 +45,39 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <div class="sticky-top">
-   <div class="_header1">
-       <nav class="container-header">
-           <div class="flex v-center">
-               <div style="margin-top: 2px; margin-bottom: 2px">
-                   <a class="text-color-white-ha hover">Hotline: 0999.999.999 </a>
-                   <span class="_span-space text-color-white-ga">|</span>
-                   <a class="text-color-white-ha hover">
-                       Address: 123 Lĩnh Nam - Hoàng Mai - Hà Nội
-                   </a>
-                   <span class="_span-space text-color-white-ga">|</span>
-                   <a class="text-color-white-ha">Kết nối: </a>
-                   <a href="https://www.facebook.com" target="_blank" class="linked">
-                       <i class="fab fa-facebook text-color-white-ha"></i>
-                   </a>
-                   <a href="https://www.instagram.com" target="_blank" class="linked">
-                       <i class ="fab fa-instagram text-color-white-ha"></i>
-                   </a>
-               </div>
+    <div class="_header1">
+        <nav class="container-header">
+            <div class="flex v-center">
+                <div style="margin-top: 2px; margin-bottom: 2px">
+                    <a class="text-color-white-ha hover">Hotline: 0999.999.999 </a>
+                    <span class="_span-space text-color-white-ga">|</span>
+                    <a class="text-color-white-ha hover">
+                        Address: 123 Lĩnh Nam - Hoàng Mai - Hà Nội
+                    </a>
+                    <span class="_span-space text-color-white-ga">|</span>
+                    <a class="text-color-white-ha">Kết nối: </a>
+                    <a href="https://www.facebook.com" target="_blank" class="linked">
+                        <i class="fab fa-facebook text-color-white-ha"></i>
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" class="linked">
+                        <i class ="fab fa-instagram text-color-white-ha"></i>
+                    </a>
+                </div>
 
-           </div>
-           <div class="navbar__spacer">
-           </div>
-           <ul class="flex v-center">
-               <a class="text-color-white-ha hover" style="cursor: pointer" onclick="chuyenHuong3()">
-                   <span>
-                       <i class="fas fa-question-circle"></i>
-                   </span>
-                   Liên hệ
-               </a>
-           </ul>
-           <?php
-           if (isset($_SESSION['user'])) {
-               ?>
+            </div>
+            <div class="navbar__spacer">
+            </div>
+            <ul class="flex v-center">
+                <a class="text-color-white-ha hover" style="cursor: pointer" onclick="chuyenHuong3()">
+                    <span>
+                        <i class="fas fa-question-circle"></i>
+                    </span>
+                    Liên hệ
+                </a>
+            </ul>
+            <?php
+            if (isset($_SESSION['user'])) {
+                ?>
                 <div class="dropdown">
                     <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="color: white; cursor: pointer;">
                         <?php echo $_SESSION['user']["name"]; ?>

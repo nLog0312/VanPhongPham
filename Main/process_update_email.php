@@ -8,6 +8,7 @@
     
     if ($result) {
         $_SESSION['toast-success'] = "Thành công";
+        $_SESSION['user']['email'] = $newEmail;
         header("Location: ./User_Infor.php");
     } else {
         $_SESSION['toast-error'] = "Thất bại";

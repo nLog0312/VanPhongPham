@@ -1,5 +1,23 @@
 <?php
     session_start();
+    
+    require_once './connect/connect.php';
+    if (isset($_COOKIE['token'])) {
+        $token = $_COOKIE['token'];
+        $sql = "SELECT * FROM `accounts` WHERE `token` = '$token'";
+        $result = mysqli_query($connect, $sql);
+        if (mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_array($result);
+            $_SESSION['user'] = $row;
+        } else {
+            $sql = "SELECT * FROM `customers` WHERE `token` = '$token'";
+            $result = mysqli_query($connect, $sql);
+            if (mysqli_num_rows($result) > 0) {
+                $row = mysqli_fetch_array($result);
+                $_SESSION['user'] = $row;
+            }
+        }
+    }
 
     $search = "";
     if (isset($_GET['search'])) {
@@ -17,7 +35,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "icon" href="picture/logo-web.png" type="image/x-icon">
-    <title>Hoàng Hà Stationery</title>
+    <title>
+        Hoàng Hà Stationery - Mua bán đồ dùng văn phòng phẩm
+    </title>
     <style>
         <?php include 'CSS/header.css' ?>
     </style>

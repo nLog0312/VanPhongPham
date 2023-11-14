@@ -13,6 +13,7 @@
     $result = mysqli_query($connect, $sql);
     if (mysqli_num_rows($result) > 0) {
         $_SESSION['toast-error'] = "Email hoặc số điện thoại đã tồn tại!";
+        header("Location: ./Register.php");
     } else {
         if ($password != $repassword) {
             $_SESSION['toast-error'] = "Mật khẩu không khớp!";
@@ -26,7 +27,11 @@
             }
             if (mysqli_query($connect, $sql)) {
                 $_SESSION['toast-success'] = "Đăng ký thành công";
-                header("Location: ./Login.php");
+                $token = md5(mysqli_insert_id($connect) . $email . $password);
+                setcookie("token", $token, time() + 3600);
+                $sqlToken = "UPDATE `customers` SET `token` = '$token' WHERE `customerID` = " . mysqli_insert_id($connect);
+                mysqli_query($connect, $sqlToken);
+                header("Location: ./index.php");
             } else {
                 $_SESSION['toast-error'] = "Đăng ký thất bại";
                 header("Location: ./Register.php");
