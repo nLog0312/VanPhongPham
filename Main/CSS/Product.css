@@ -315,6 +315,11 @@
     height: 35px;
 }
 
+.btn-muahang:disabled{
+    cursor: not-allowed;
+    background-color: #ccc;
+}
+
 .alert-danger {
     width: 100%;
     margin-top: 0.25rem;
