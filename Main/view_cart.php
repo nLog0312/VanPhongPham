@@ -123,6 +123,7 @@
                     <div class="AOV">
                         <div>
                             <div class="in-label me-3">
+                                <input type="text" hidden name="ids[]" value="<?php echo $id;?>">
                                 <input onchange="calTotal(event)" type="checkbox" name="productFromCart[]" value="<?php echo $each['idDetail'];?>" class="product-checkbox" id="myCheckbox_<?php echo $each['idDetail']; ?>">
                                 <label for="myCheckbox_<?php echo $each['idDetail']; ?>"></label>
                             </div>
@@ -145,6 +146,7 @@
                                     <div class="max-text-giohang">
                                         <?php echo $each['name'];?>
                                     </div>
+                                <input type="text" hidden name="names[]" value="<?php echo $each['name'];?>">
                                 </div>
                             </div>
 
@@ -199,7 +201,7 @@
                             0 VND
                         </div>
                     <div>
-                        <button  id="btnSubmit" type="submit" class="btn-muahang">Mua hàng</button>
+                        <button disabled id="btnSubmit" type="submit" class="btn-muahang">Mua hàng</button>
                     </div>
                 </div>
             </div>

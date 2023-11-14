@@ -93,6 +93,19 @@ function calTotalPrice(idDetail) {
 const selectAllCheckbox = document.getElementById('myCheckbox_final');
 const productCheckboxes = document.querySelectorAll('.product-checkbox');
 const btnSubmit = document.querySelector('#btnSubmit');
+window.onload = function() {
+    let checkContain = false;
+    productCheckboxes.forEach(function(checkbox) {
+        if (checkbox.checked) {
+            checkContain = true;
+        }
+    });
+    if (checkContain) {
+        btnSubmit.disabled = false;
+    } else {
+        btnSubmit.disabled = true;
+    }
+}
 
 function calTotal(e) {
     const textThanhtoan = document.querySelector('#totalPrice');
