@@ -32,13 +32,33 @@ function increaseQuantity() {
     errorQuantity.innerHTML = '';
     quantityInput.value = currentValue + 1;
 }
+function changeQuantity() {
+    let check = false;
+    lstBtnProperty.forEach(item => {
+        if (item.classList.contains('active')) {
+            check = true;
+        }
+    });
+    if (!check) {
+        quantityInput.value = 1;
+        errorQuantity.innerHTML = `<div class="alert-danger" role="alert">Vui lòng chọn thuộc tính!</div>`;
+        return;
+    }
+    var currentValue = parseInt(quantityInput.value);
+    var maxQuantity = parseInt(quantityInput.max);
+    if (currentValue > maxQuantity) {
+        quantityInput.value = maxQuantity;
+        return;
+    }
+    errorQuantity.innerHTML = '';
+}
 
 var addButton = document.querySelector('.add-giohang');
 var thongBao = document.querySelector('.thong-bao');
 var closeBtn = document.querySelector('.close-btn');
 var okButton = document.querySelector('.ok-btn2');
 addButton.addEventListener('click', function() {
-    thongBao.style.display = 'block';
+    // thongBao.style.display = 'block';
 });
 
 closeBtn.addEventListener('click', function() {
@@ -53,6 +73,7 @@ function chuyenHuonggiohang() {
 }
 
 function clickBtnProperty(e) {
+
     lstBtnProperty.forEach(item => {
         item.classList.remove('active');
     });
@@ -84,6 +105,22 @@ function clickBtnProperty(e) {
 let bigImg = document.querySelector('.link-product img');
 function showImg(pic){
     bigImg.src = pic;
+}
+
+function AddToCart(idProduct) {
+    let check = false;
+    lstBtnProperty.forEach(item => {
+        if (item.classList.contains('active')) {
+            check = true;
+        }
+    });
+    if (!check) {
+        errorQuantity.innerHTML = `<div class="alert-danger" role="alert">Vui lòng chọn thuộc tính!</div>`;
+        return;
+    }
+    let quantity = quantityInput.value;
+    let idproperty = document.querySelector('.details-button.active').id;
+    window.location.href = './add_to_cart.php?id=' + idProduct + '&property=' + idproperty + '&quantity=' + quantity;
 }
 
 

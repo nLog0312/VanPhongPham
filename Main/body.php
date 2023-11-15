@@ -66,92 +66,16 @@
 
                 </div>
                 <div class="extra-right-banner">
-                    <a href="#banner2">
-                        <img class="war2" src="picture/1_5.jpg"/>
-                    </a>
-                    <a href="#banner3">
-                        <img class="war3" src="picture/1_2.jpg"/>
+                    <img class="war2" src="picture/1_5.jpg" alt="..."/>
+                    <img class="war3" src="picture/1_2.jpg" alt="..."/>
                     </a>
                 </div>
             </div>
-
-<!--          <div class="_icon">-->
-<!--                <a class="_link-icon" href="#freeship">-->
-<!--                    <div class="_top-icon" style="width: 150px">-->
-<!--                        <div class="_ss1 _bo1">-->
-<!--                            <img class="_size-icon" src="picture/freeship.png"/>-->
-<!--                        </div>-->
-<!--                        <div class="_size-icon-text">-->
-<!--                            Miễn phí ship - giao hàng tận nơi-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </a>-->
-<!--                <a class="_link-icon" href="#freeship">-->
-<!--                    <div class="_top-icon" style="width: 150px">-->
-<!--                        <div class="_ss1 _bo1">-->
-<!--                            <img class="_size-icon" src="picture/voucher.png"/>-->
-<!--                        </div>-->
-<!--                        <div class="_size-icon-text">-->
-<!--                            Săn voucher - <br/> Giảm sập sàn-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </a>-->
-<!--                <a class="_link-icon" href="#freeship">-->
-<!--                    <div class="_top-icon" style="width: 150px">-->
-<!--                        <div class="_ss1 _bo1">-->
-<!--                            <img class="_size-icon" src="picture/50ps.png"/>-->
-<!--                        </div>-->
-<!--                        <div class="_size-icon-text">-->
-<!--                            Giảm giá lên <br/> đến 50%-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </a>-->
-<!--                <a class="_link-icon" href="#freeship">-->
-<!--                    <div class="_top-icon" style="width: 150px">-->
-<!--                        <div class="_ss1 _bo1">-->
-<!--                            <img class="_size-icon" src="picture/qt.png"/>-->
-<!--                        </div>-->
-<!--                        <div class="_size-icon-text">-->
-<!--                           Săn hàng quốc tế-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </a>-->
-<!--                <a class="_link-icon" href="#freeship">-->
-<!--                    <div class="_top-icon" style="width: 150px">-->
-<!--                        <div class="_ss1 _bo1">-->
-<!--                            <img class="_size-icon" src="picture/fire.png"/>-->
-<!--                        </div>-->
-<!--                        <div class="_size-icon-text">-->
-<!--                            Săn hàng giá rẻ-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </a>-->
-<!--                <a class="_link-icon" href="#freeship">-->
-<!--                    <div class="_top-icon" style="width: 150px">-->
-<!--                        <div class="_ss1 _bo1">-->
-<!--                            <img class="_size-icon" src="picture/kho.png"/>-->
-<!--                        </div>-->
-<!--                        <div class="_size-icon-text">-->
-<!--                           Xả kho-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </a>-->
-<!--                <a class="_link-icon" href="#freeship">-->
-<!--                    <div class="_top-icon" style="width: 150px">-->
-<!--                        <div class="_ss1 _bo1">-->
-<!--                            <img class="_size-icon" src="picture/tonghop.png"/>-->
-<!--                        </div>-->
-<!--                        <div class="_size-icon-text">-->
-<!--                            Văn phòng phẩm <br/> tổng hợp-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </a>-->
-<!--            </div>-->
     </div>
 
         <?php
         include('danhmuc.php');
-        include('goiy.php');
+        // include('goiy.php');
         include('dssanpham.php');
         include('Footer.php');
         ?>

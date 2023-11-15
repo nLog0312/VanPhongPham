@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    showContent('info3');
+    showContent('info1');
 });
 
 function showContent(id) {
@@ -63,11 +63,11 @@ var overlay = document.querySelector('.overlay');
 var btnTrolai = document.getElementById('btn-trolai');
 var addTrolai = document.getElementById('add-btn-trolai');
 
-updateButton.addEventListener('click', function(event) {
-    event.preventDefault();
-    updateForm.style.display = 'block';
-    overlay.classList.add('active'); // Thêm lớp active khi form được hiển thị
-});
+// updateButton.addEventListener('click', function(event) {
+//     event.preventDefault();
+//     updateForm.style.display = 'block';
+//     overlay.classList.add('active'); // Thêm lớp active khi form được hiển thị
+// });
 addButton.addEventListener('click', function(event) {
     event.preventDefault();
     addForm.style.display = 'block';

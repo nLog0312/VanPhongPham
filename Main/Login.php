@@ -1,5 +1,23 @@
 <?php
     session_start();
+    
+    require_once './connect/connect.php';
+    if (isset($_COOKIE['token'])) {
+        $token = $_COOKIE['token'];
+        $sql = "SELECT * FROM `accounts` WHERE `token` = '$token'";
+        $result = mysqli_query($connect, $sql);
+        if (mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_array($result);
+            $_SESSION['user'] = $row;
+        } else {
+            $sql = "SELECT * FROM `customers` WHERE `token` = '$token'";
+            $result = mysqli_query($connect, $sql);
+            if (mysqli_num_rows($result) > 0) {
+                $row = mysqli_fetch_array($result);
+                $_SESSION['user'] = $row;
+            }
+        }
+    }
     if (isset($_SESSION['user'])) {
         header('Location: index.php');
     }
@@ -10,6 +28,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hoàng Hà Stationery</title>
+    <link rel = "icon" href="picture/logo-web.png" type="image/x-icon">
     <style>
         <?php include 'CSS/Register.css' ?>
     </style>
@@ -79,6 +98,7 @@
                         <input name="email" type="text" placeholder="Nhập email/số điện thoại">
                         <input name="password" type="password" placeholder="Nhập mật khẩu">
                         <input type="submit" class="button" value="Đăng nhập">
+                        <input type="checkbox" name="remember"><span class="remember">Nhớ mật khẩu</span>
                     </form>
                     <div class="signup">
                         <span class="signup">Không có tài khoản?
