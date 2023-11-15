@@ -218,23 +218,22 @@
                             <div id="phivc" class="T01">
                                 <div class="line1">Phí vận chuyển: </div>
                                 <div class="line2 fs-5">
-                                    <?php
+                                <?php
                                     foreach($address as $item_default) {
                                         if ($item_default['macdinh'] == 1) {
                                             if (str_contains(strtolower($item_default['tinh']), 'hà nội') && $totalPrice >= 100000) {
-                                                echo "Miễn phí";
+                                                echo "Miễn phí </div>";
                                                 echo "<input hidden type='text' name='fee-ship' value='0'>";
                                             } elseif(str_contains(strtolower($item_default['tinh']), 'hà nội')) {
-                                                echo "30.000 VND";
+                                                echo "30.000 VND </div>";
                                                 echo "<input hidden type='text' name='fee-ship' value='30000'>";
                                             } else {
-                                                echo "50.000 VND";
+                                                echo "50.000 VND </div>";
                                                 echo "<input hidden type='text' name='fee-ship' value='50000'>";
                                             }
                                         }
                                     }
-                                    ?>
-                                </div>
+                                ?>
                             </div>
                             <div id="tongtt" class="T01">
                                 <div class="line1">Tổng thanh toán: </div>

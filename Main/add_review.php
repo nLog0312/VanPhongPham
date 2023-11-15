@@ -10,8 +10,8 @@
     }
 
     $content = $_POST['feedback'];
-    if (isset($_SESSION['user']) && !empty($_SESSION['user']['id'])) {
-        $idCustomer = $_SESSION['user']['id'];
+    if (isset($_SESSION['user']) && !empty($_SESSION['user']['customerID'])) {
+        $idCustomer = $_SESSION['user']['customerID'];
         $sqlString = "INSERT INTO `feedbacks`(`customerID`,`content`) VALUES ('$idCustomer', $content)";
     } else {
         $sqlString = "INSERT INTO `feedbacks`(`content`) VALUES ('$content')";

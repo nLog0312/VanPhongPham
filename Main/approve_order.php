@@ -25,8 +25,9 @@
         $total += ($pricesProduct[$i] * $quantitiesProduct[$i]);
     }
     $total += $feeShip;
+    $created_date = date('Y-m-d H:i:s'); // Get current date
 
-    $sqlInsertInvoice = "INSERT INTO hoadon (`ma_hoadon`, `customerID`, `tienthanhtoan`, `phivc`, `trangthai`) VALUES ('$mahoadon', '".$_SESSION['user']['customerID']."', $total, '$feeShip', 0)";
+    $sqlInsertInvoice = "INSERT INTO hoadon (`ma_hoadon`, `customerID`, `ma_diachi_nhanhang`, `tienthanhtoan`, `phivc`, `trangthai`, `createdDate`) VALUES ('$mahoadon', '".$_SESSION['user']['customerID']."', $deliveryAddress, $total, '$feeShip', 0, '$created_date')";
     $resultInsertInvoice = mysqli_query($connect, $sqlInsertInvoice);
 
     if ($resultInsertInvoice){
