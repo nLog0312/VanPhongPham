@@ -222,6 +222,14 @@ div{
     margin-top: 15px;
     gap: 10px;
 }
+.grid-itemss{
+    display: grid;
+    justify-items: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    grid-template-columns: repeat(5, 1fr);
+    margin-top: 15px;
+    gap: 10px;
+}
 .grid-items2{
     display: grid;
     justify-items: center; /* Căn giữa theo chiều ngang */
@@ -338,6 +346,7 @@ div{
 }
 ._sanpham_text{
     color: #cc0621;
+    display: flex;
     font-size: 1rem;
     font-weight: 500;
     margin-left: 1.5rem;
