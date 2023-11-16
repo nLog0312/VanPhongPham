@@ -28,6 +28,9 @@
     if (isset($_GET['limit'])) {
         $limit = $_GET['limit'];
     }
+
+    $cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
+    $itemCount = count($cart);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -162,7 +165,7 @@
                                     </button>
                                 </div>
                             </div>
-                        </form>
+
 
                         <div class="link_sp_header">
                             <a class="_search-text hover" href="index.php?search=giấy">Giấy A4</a>
@@ -181,7 +184,10 @@
                     </div>
                     <div class="_btn-gioHang">
                         <a href="view_cart.php" class="text-color-white _gioHang hover">
-                            <i class="fas fa-shopping-cart"></i>
+                            <i class="fas fa-shopping-cart">
+                                <span class="cart-count"><?php echo $itemCount; ?></span>
+                            </i>
+
                         </a>
                     </div>
 
