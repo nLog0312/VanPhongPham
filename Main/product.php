@@ -142,55 +142,53 @@
                             <div class="header-color"><?php echo $propertyParent['ten_thuoctinhcha'];?></div>
                             <div class="x099">
                                 <?php foreach($lstIDPropertyChild as $propertyChild) {
-                                    if ($propertyChild['ten_thuoctinhcha'] == $propertyParent['ma_thuoctinh']) {?>
-                                        <button id="<?php echo $propertyChild['ma_thuoctinh'];?>" class="details-button" onclick="clickBtnProperty(event)">
-                                            <?php echo $propertyChild['ten_thuoctinhcon'];?>
-                                        </button>
-                                    <?php }
+                                    if ($propertyChild['ten_thuoctinhcha'] == $propertyParent['ma_thuoctinh']) {
+                                        foreach($resultDetail as $itemProductDetail) {
+                                            if ($itemProductDetail['ma_thuoctinh'] == $propertyChild['ma_thuoctinh']) {
+                                                $idproductChild = $itemProductDetail['id'];
+                                            }
+                                        }
+                                ?>
+                                    <button id="<?php echo $propertyChild['ma_thuoctinh'];?>" data-productChild="<?php echo $idproductChild;?>" class="details-button" onclick="clickBtnProperty(this, event)">
+                                        <?php echo $propertyChild['ten_thuoctinhcon'];?>
+                                    </button>
+                                <?php }
                                 }?>
                             </div>
                         </div>
                     <?php }?>
                 </div>
-                <div class="details-choose">
-                    <div class="color-details">
-                        <div class="header-color">Số lượng</div>
-                        <div class="x0100">
-                            <button class="button-subtr" onclick="decreaseQuantity()">-</button>
-                            <input class="input-quantity" id="quantityInput" oninput="changeQuantity()" value="1">
-                            <button class="button-subtr" onclick="increaseQuantity()">+</button>
-                        </div>
-                        <div class="message-error"></div>
-                    </div>
-                </div>
-                <div class="details-buy">
-                    <div class="color-details">
-                        <div>
-                            <button class="add-giohang" onclick="AddToCart('<?php echo $id; ?>')">
-                                <i class="fas fa-shopping-cart"></i>
-                                <span>
-                                    Thêm Vào Giỏ Hàng
-                                </span>
-                            </button>
-                            <div class="thong-bao">
-                                <div class="thong-bao-header">
-                                    <div class="text-giohang">Giỏ hàng</div>
-                                    <div class="close-btn">&times;</div>
-                                </div>
-                                <p style="justify-content: center; align-items: center; display: flex;">
-                                    <img src="picture/checkok.png" style="width: 35px; height: 35px; margin-right: 8px;" alt="...">
-                                    <span>
-                                        Đã thêm vào giỏ hàng!
-                                    </span>
-                                </p>
-                                <hr style="margin: 0"/>
-                                <button class="ok-btn2">OK</button>
-                                <button class="ok-btn" onclick="chuyenHuonggiohang()">Vào giỏ hàng</button>
+                <form action="muangay.php" method="post">
+                    <input type="text" hidden name="idProduct" value="<?php echo $id;?>">
+                    <input type="text" hidden name="idProductDetail" value="">
+                    <div class="details-choose">
+                        <div class="color-details">
+                            <div class="header-color">Số lượng</div>
+                            <div class="x0100">
+                                <button type="button" class="button-subtr" onclick="decreaseQuantity()">-</button>
+                                <input name="quantity" class="input-quantity" id="quantityInput" oninput="changeQuantity()" value="1">
+                                <button type="button" class="button-subtr" onclick="increaseQuantity()">+</button>
                             </div>
-                            <button class="muaHang">Mua Ngay</button>
+                            <div class="message-error"></div>
                         </div>
                     </div>
-                </div>
+                    <div class="details-buy">
+                        <div class="color-details">
+                            <div>
+                                <button type="button" class="add-giohang" onclick="AddToCart('<?php echo $id; ?>')">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    <span>
+                                        Thêm Vào Giỏ Hàng
+                                    </span>
+                                </button>
+                                    
+                                <button type="submit" class="muaHang">
+                                    Mua Ngay
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
 
         </div>
