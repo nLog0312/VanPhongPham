@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="40c4ff23-55f7-4783-949d-40708abb017d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/CSS/Product.css" beforeDir="false" afterPath="$PROJECT_DIR$/Main/CSS/Product.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/product.php" beforeDir="false" afterPath="$PROJECT_DIR$/Main/product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/view_cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/Main/view_cart.php" afterDir="false" />
-    </list>
+    <list default="true" id="40c4ff23-55f7-4783-949d-40708abb017d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,8 +13,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -73,6 +68,8 @@
       <workItem from="1699250713414" duration="11924000" />
       <workItem from="1699282139796" duration="5703000" />
       <workItem from="1699580294096" duration="766000" />
+      <workItem from="1700060527517" duration="5439000" />
+      <workItem from="1700148357326" duration="2336000" />
     </task>
     <servers />
   </component>
@@ -96,7 +93,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/Main/product.php</url>
-          <line>3</line>
+          <line>4</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
