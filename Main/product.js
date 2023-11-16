@@ -54,25 +54,22 @@ function changeQuantity() {
 }
 
 var addButton = document.querySelector('.add-giohang');
-var thongBao = document.querySelector('.thong-bao');
 var closeBtn = document.querySelector('.close-btn');
 var okButton = document.querySelector('.ok-btn2');
 addButton.addEventListener('click', function() {
     // thongBao.style.display = 'block';
 });
 
-closeBtn.addEventListener('click', function() {
-    thongBao.style.display = 'none';
-});
-okButton.addEventListener('click', function() {
-    thongBao.style.display = 'none';
-});
 
 function chuyenHuonggiohang() {
     window.location.href = 'view_cart.php';
 }
 
-function clickBtnProperty(e) {
+const inputIdProductDetail = document.querySelector('form input[name="idProductDetail"]');
+
+function clickBtnProperty(element, e) {
+    const idProductDetail = element.getAttribute('data-productChild');
+    inputIdProductDetail.value = idProductDetail.toString();
 
     lstBtnProperty.forEach(item => {
         item.classList.remove('active');
