@@ -6,11 +6,11 @@
     }
     require_once "./connect/connect.php";
 
-    $ids = $_POST['ids'];
-    $pricesProduct = $_POST['prices-product'];
     $deliveryAddress = $_POST['delivery-address'];
-    $quantitiesProduct = $_POST['quantities-product'];
     $feeShip = $_POST['fee-ship'];
+    $total = $_POST['totalPrice'];
+    $idProductDetail = $_POST['idProductDetail'];
+    $quantity = $_POST['quantity'];
 
     // Tạo mã hóa đơn
     $sqlCountInvoice = "SELECT COUNT(*) FROM hoadon";
@@ -19,11 +19,6 @@
     $count_invoice = $row[0];
     $mahoadon = "HD".($count_invoice + 1);
 
-    // Tính tổng tiền
-    $total = 0;
-    for($i = 0; $i < count($ids); $i++){
-        $total += ($pricesProduct[$i] * $quantitiesProduct[$i]);
-    }
     $total += $feeShip;
     $created_date = date('Y-m-d H:i:s'); // Get current date
 
@@ -31,12 +26,9 @@
     $resultInsertInvoice = mysqli_query($connect, $sqlInsertInvoice);
 
     if ($resultInsertInvoice){
-        for($i = 0; $i < count($ids); $i++){
-            $sqlInsertInvoiceDetail = "INSERT INTO chitiet_hoadon (`ma_hoadon`, `id_ct_sanpham`, `soluong`) VALUES ('$mahoadon', '".$ids[$i]."', '".$quantitiesProduct[$i]."')";
-            $resultInsertInvoiceDetail = mysqli_query($connect, $sqlInsertInvoiceDetail);
-            // Xoá giỏ hàng
-            unset($_SESSION['cart'][$ids[$i]]);
-        }
+        $sqlInsertInvoiceDetail = "INSERT INTO chitiet_hoadon (`ma_hoadon`, `id_ct_sanpham`, `soluong`) VALUES ('$mahoadon', '".$idProductDetail."', '".$quantity."')";
+        $resultInsertInvoiceDetail = mysqli_query($connect, $sqlInsertInvoiceDetail);
+        
         $_SESSION["toast-success"] = "Đặt hàng thành công";
         header("Location: ./index.php");
         exit();

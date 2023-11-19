@@ -4,26 +4,51 @@
         header('Location: Login.php');
         die();
     }
-                
-    if (isset($_POST['productFromCart'])) {
-        $ids = $_POST['ids'];
-        $productFromCart = $_POST['productFromCart'];
-        $images = $_POST['images'];
-        $name = $_POST['names'];
-        $properties = $_POST['properties'];
-        $price = $_POST['price'];
-        $quantity = $_POST['quantity'];
-        $totalPrice = $_POST['totalPrice'];
-    } else {
-        $_SESSION['toast-error'] = "Bạn chưa chọn sản phẩm nào!";
-        header('Location: view_cart.php');
-        exit();
-    }
 
     require_once './connect/connect.php';
     require_once './connect/funcion.php';
     $stringSQL = "SELECT * FROM `diachi_nhanhang` WHERE `customerID` = '" . $_SESSION['user']['customerID'] . "'";
     $address = mysqli_query($connect, $stringSQL);
+
+    $idProduct = $_POST['idProduct'];
+    if (!isset($_POST['idProductDetail']) || empty($_POST['idProductDetail'])) {
+        $_SESSION['toast-error'] = "Bạn chưa chọn thuộc tính";
+        header('Location: product.php?id=' . $idProduct);
+        exit();
+    }
+    $idProductDetail = $_POST['idProductDetail'];
+    $quantity = $_POST['quantity'];
+    
+    $stringSQL = "
+        SELECT ctsp.*, sp.ten_sanpham, sp.gia_sanpham FROM `chitiet_sanpham` ctsp
+        INNER JOIN `sanpham` sp ON ctsp.`ma_sanpham` = sp.`ma_sanpham`
+        WHERE `id` = '" . $idProductDetail . "'
+    ";
+    $product = mysqli_query($connect, $stringSQL);
+    $eachProduct = mysqli_fetch_array($product);
+
+    function get_thuoctinh($idProduct, $connect) {
+        $stringSQL = "SELECT * FROM `thuoctinh`";
+        $result = mysqli_query($connect, $stringSQL);
+        $each = mysqli_fetch_array($result);
+
+        $ten_thuoctinhcon = '';
+        $ten_thuoctinhcha = '';
+        foreach ($result as $each) {
+            if ($each['ma_thuoctinh'] == $idProduct) {
+                $ten_thuoctinhcon = $each['ten_thuoctinhcon'];
+
+                foreach ($result as $eachV2) {
+                    if ($eachV2['ma_thuoctinh'] == $each['ten_thuoctinhcha']) {
+                        $ten_thuoctinhcha = $eachV2['ten_thuoctinhcha'];
+                        break;
+                    }
+                }
+                break;
+            }
+        }
+        return $ten_thuoctinhcha . ' - ' . $ten_thuoctinhcon;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -127,7 +152,7 @@
     </div >
 
 
-    <form action="approve_order.php" method="post">
+    <form action="process_muangay.php" method="post">
         <div style="background-color: #F7F7F7">
             <div class="container-thanhtoan">
                 <div class="diachi-thanhtoan">
@@ -165,8 +190,6 @@
                     </div>
 
                     <div style="background-color: white; ">
-                    
-                    <?php for ($index = 0; $index < count($productFromCart); $index++) { ?>
                         <div style="border-bottom: 1px dashed rgba(0,0,0,.09);"></div>
                         <div style="padding-bottom: 20px; display: flex; align-items: center">
                             <input hidden type="text" name="ids[]" value="<?php echo $ids[$index];?>">
@@ -176,33 +199,34 @@
                             <div class="img-thanhtoan">
                                 <img src="
                                 <?php
-                                    if (str_contains($images[$index], 'https')){
-                                        echo $images[$index];
+                                    if (str_contains($eachProduct['anhs_sanpham'], 'https')){
+                                        echo $eachProduct['anhs_sanpham'];
                                     }
                                     else {
-                                        echo "../Admin/" . $images[$index];
+                                        echo "../Admin/" . $eachProduct['anhs_sanpham'];
                                     }
                                 ?>
                                 " style="width: 100%; height: 100%" alt="...">
                             </div>
                             <div class="text-sanpham-thanhtoan">
-                                <?php echo $name[$index]?>
+                                <?php echo $eachProduct['ten_sanpham']?>
                             </div>
                             <div class="loai-thanhtoan">
-                                <?php echo $properties[$index]?>
+                                <?php echo get_thuoctinh($eachProduct['ma_thuoctinh'], $connect)?>
                             </div>
                             <div class="dongia-thanhtoan">
-                                <?php echo product_price($price[$index]);?>
+                                <?php echo product_price($eachProduct['gia_sanpham']);?>
                             </div>
                             <div class="dongia-thanhtoan">
-                                <?php echo $quantity[$index]?>
+                                <?php echo $quantity?>
                             </div>
                             <div class="thanhtien-thanhtoan">
-                                <?php echo product_price($price[$index] * $quantity[$index]);?>
+                                <?php echo product_price($eachProduct['gia_sanpham'] * $quantity);?>
                             </div>
+                            <input type="text" hidden name="quantity" value="<?php echo $quantity;?>">
+                            <input type="text" hidden name="totalPrice" value="<?php echo product_price($eachProduct['gia_sanpham'] * $quantity);?>">
+                            <input type="text" hidden name="idProductDetail" value="<?php echo $idProductDetail?>">
                         </div>
-                    <?php } ?>
-
                     </div>
                 </div>
 
@@ -213,7 +237,7 @@
                         <div class="details-thanhtoan" >
                             <div id="tongtienhang" class="T01">
                                 <div class="line1">Tổng tiền hàng: </div>
-                                <div class="line2 fs-5"><?php echo product_price($totalPrice);?></div>
+                                <div class="line2 fs-5"><?php echo product_price($eachProduct['gia_sanpham'] * $quantity);?></div>
                             </div>
                             <div id="phivc" class="T01">
                                 <div class="line1">Phí vận chuyển: </div>
@@ -244,7 +268,7 @@
                         <div style="padding: 25px; display: flex">
                             <div style="color: #737373; display: flex; align-items: center; font-size: 14px">Kiểm tra lại thông tin trước khi nhấn "Đặt Hàng"</div>
                             <div style="flex: 1"></div>
-                            <button class="btn-dathang" id="btn-dathang">Đặt hàng</button>
+                            <button type="submit" class="btn-dathang" id="btn-dathang">Đặt hàng</button>
                         </div>
                     </div>
                 </div>
