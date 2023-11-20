@@ -225,7 +225,6 @@ div{
 .grid-itemss{
     display: grid;
     justify-items: center; /* Căn giữa theo chiều ngang */
-    align-items: center; /* Căn giữa theo chiều dọc */
     grid-template-columns: repeat(5, 1fr);
     margin-top: 15px;
     gap: 10px;

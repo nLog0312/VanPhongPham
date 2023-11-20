@@ -71,16 +71,6 @@
                        <a class="giay-link-body-items" href="#A4"> Giấy Ford</a>
                        <span>&nbsp;|&nbsp;</span>
                        <a class="giay-link-body-items" href="#A4"> Giấy Couche</a>
-                       <span>&nbsp;|&nbsp;</span>
-                       <a class="giay-link-body-items" href="#A4">Giấy Bristol</a>
-                       <span>&nbsp;|&nbsp;</span>
-                       <a class="giay-link-body-items" href="#A4">Giấy Duplex</a>
-                       <span>&nbsp;|&nbsp;</span>
-                       <a class="giay-link-body-items" href="#A4">Giấy Decal</a>
-                       <span>&nbsp;|&nbsp;</span>
-                       <a class="giay-link-body-items" href="#A4">Giấy Kraft</a>
-                       <span>&nbsp;|&nbsp;</span>
-                       <a class="giay-link-body-items" href="#A4">Giấy mỹ thuật</a>
                    </div>
                     <div class="X08">
                         <a href="#giay" class="giay-link-header">
@@ -92,25 +82,7 @@
                         <span>&nbsp;|&nbsp;</span>
                         <a class="giay-link-body-items" href="#A4">Sổ tay bìa da thật</a>
                         <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Sổ tay bìa giả da, simili</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Sổ tay bìa còng</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Sổ tay lò xo</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4"> Sổ tay bìa nhét</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Sổ tay dán gáy</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Sổ lăn sơn cạnh</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Sổ tay cao cấp may chỉ</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Sổ giấy mềm</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Sổ ảnh</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Sổ tay bút ký</a>
+                        <a class="giay-link-body-items" href="#A4">Sổ tay bìa giả da</a>
                     </div>
                 </div>
                 <div>
@@ -120,25 +92,13 @@
                         </a>
                     </div>
                     <div class="giay-link-body">
-                        <a class="giay-link-body-items" href="#A4">Ghế văn phòng chân tĩnh, chân gỗ </a>
-                        <span>&nbsp;|&nbsp;</span>
                         <a class="giay-link-body-items" href="#A4">Ghế gấp văn phòng</a>
                         <span>&nbsp;|&nbsp;</span>
                         <a class="giay-link-body-items" href="#A4">Sofa</a>
                         <span>&nbsp;|&nbsp;</span>
                         <a class="giay-link-body-items" href="#A4">Ghế văn phòng chân quỳ</a>
                         <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Ghế xoay cao cấp</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Ghế công thái học</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Ghế xoay có tựa đầu</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Ghế xoay không tựa đầu</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Ghế xoay có gác chân</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Sofa</a>
+                        <a class="giay-link-body-items" href="#A4">Ghế xoay có gác chân</a>p
                     </div>
                     <div class="X08">
                         <a href="#giay" class="giay-link-header">
@@ -147,12 +107,6 @@
                     </div>
                     <div class="giay-link-body">
                         <a class="giay-link-body-items" href="#A4">Hồ sơ, tài liệu hành chính văn phòng</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Hồ sơ xin việc</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Bìa Hồ Sơ 12 Ngăn</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Bìa 3 dây</a>
                         <span>&nbsp;|&nbsp;</span>
                         <a class="giay-link-body-items" href="#A4">Bìa Nút</a>
                         <span>&nbsp;|&nbsp;</span>
@@ -168,22 +122,6 @@
                         </a>
                     </div>
                     <div class="giay-link-body">
-                        <a class="giay-link-body-items" href="#A4">Kệ khung sắt mâm gỗ</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Kệ trưng bày lưng lưới</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Kệ tôn lỗ trưng bày</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Kệ tôn liền trưng bày </a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Kệ sắt V lỗ trưng bày</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Kệ trưng bày bằng giỏ đựng</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Kệ lưng lưới</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Kệ kính</a>
-                        <span>&nbsp;|&nbsp;</span>
                         <a class="giay-link-body-items" href="#A4">Giỏ lưới Comix</a>
                         <span>&nbsp;|&nbsp;</span>
                         <a class="giay-link-body-items" href="#A4">Giỏ đồ đa năng</a>
@@ -202,29 +140,7 @@
                         <span>&nbsp;|&nbsp;</span>
                         <a class="giay-link-body-items" href="#A4">Balo Chống Sốc</a>
                         <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Balo chống nước</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Balo có kèm sạc </a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Balo siêu nhẹ</a>
-                        <span>&nbsp;|&nbsp;</span>
                         <a class="giay-link-body-items" href="#A4">Balo thời trang</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Balo sọc</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Cặp quai mềm</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Cặp xách tay</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Cặp nhiều ngăn</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Cặp siêu rộng</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Cặp có kèm sạc</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Cặp chống nước</a>
-                        <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Cặp quai mềm</a>
 
                     </div>
                 </div>
