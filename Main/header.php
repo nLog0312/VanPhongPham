@@ -156,7 +156,7 @@
                         </a>
                     </div>
                     <div class="in-thanh-sp">
-                        <form style="margin-bottom: 0">
+                        <form style="margin-bottom: 0;" action="Allsanpham.php" method="get">
                             <div class="thanh_sp_header">
                                 <input name="search" value="<?php echo $search?>" type="text" class="input-search" placeholder="Nhập tìm kiếm...">
                                 <div class="khung-button">
@@ -165,20 +165,20 @@
                                     </button>
                                 </div>
                             </div>
-
+                        </form>
 
                         <div class="link_sp_header">
-                            <a class="_search-text hover" href="index.php?search=giấy">Giấy A4</a>
-                            <a class="_search-text hover" href="index.php?search=kẹp sách">Kẹp sách</a>
-                            <a class="_search-text hover" href="index.php?search=bút">Bút các loại</a>
-                            <a class="_search-text hover" href="index.php?search=mực">Mực</a>
-                            <a class="_search-text hover" href="index.php?search=ghim">Ghim</a>
-                            <a class="_search-text hover" href="index.php?search=máy tính">Máy tính</a>
-                            <a class="_search-text hover" href="index.php?search=ghế">Ghế</a>
-                            <a class="_search-text hover" href="index.php?search=bàn">Bàn</a>
-                            <a class="_search-text hover" href="index.php?search=giá sách">Giá sách</a>
-                            <a class="_search-text hover" href="index.php?search=túi vải">Túi vải</a>
-                            <a class="_search-text hover" href="index.php?search=cặp">Cặp</a>
+                            <a class="_search-text hover" href="Allsanpham.php?search=giấy">Giấy A4</a>
+                            <a class="_search-text hover" href="Allsanpham.php?search=kẹp sách">Kẹp sách</a>
+                            <a class="_search-text hover" href="Allsanpham.php?search=bút">Bút các loại</a>
+                            <a class="_search-text hover" href="Allsanpham.php?search=mực">Mực</a>
+                            <a class="_search-text hover" href="Allsanpham.php?search=ghim">Ghim</a>
+                            <a class="_search-text hover" href="Allsanpham.php?search=máy tính">Máy tính</a>
+                            <a class="_search-text hover" href="Allsanpham.php?search=ghế">Ghế</a>
+                            <a class="_search-text hover" href="Allsanpham.php?search=bàn">Bàn</a>
+                            <a class="_search-text hover" href="Allsanpham.php?search=giá sách">Giá sách</a>
+                            <a class="_search-text hover" href="Allsanpham.php?search=túi vải">Túi vải</a>
+                            <a class="_search-text hover" href="Allsanpham.php?search=cặp">Cặp</a>
                         </div>
 
                     </div>
