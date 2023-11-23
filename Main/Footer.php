@@ -1,6 +1,13 @@
 <style>
     <?php include 'CSS/Footer.css' ?>
 </style>
+<?php
+    $search = "";
+    if (isset($_GET['search'])) {
+        $search = $_GET['search'];
+    }
+?>
+?>
 <footer class="hntp">
     <div class="inf-text">
         <div class="inf-basic">
@@ -53,94 +60,94 @@
             <div class="grid-dm">
                 <div>
                     <div class="X07">
-                        <a href="#giay" class="giay-link-header">
+                        <a class="giay-link-header" href="Allsanpham.php?search=Giấy in ấn">
                             GIẤY IN ẤN
                         </a>
                     </div>
                    <div class="giay-link-body">
-                       <a class="giay-link-body-items" href="#A4">A4</a>
+                       <a class="giay-link-body-items" <a class="giay-link-body-items" href="Allsanpham.php?search=A4">A4</a>
                        <span>&nbsp;|&nbsp;</span>
-                       <a class="giay-link-body-items" href="#A4">A1</a>
+                       <a class="giay-link-body-items" <a class="giay-link-body-items" href="Allsanpham.php?search=A1">A1</a>
                        <span>&nbsp;|&nbsp;</span>
-                       <a class="giay-link-body-items" href="#A4">A2</a>
+                       <a class="giay-link-body-items" <a class="giay-link-body-items" href="Allsanpham.php?search=A2">A2</a>
                        <span>&nbsp;|&nbsp;</span>
-                       <a class="giay-link-body-items" href="#A4">A3</a>
+                       <a class="giay-link-body-items" <a class="giay-link-body-items" href="Allsanpham.php?search=A3">A3</a>
                        <span>&nbsp;|&nbsp;</span>
-                       <a class="giay-link-body-items" href="#A4">A5</a>
+                       <a class="giay-link-body-items" <a class="giay-link-body-items" href="Allsanpham.php?search=A5">A5</a>
                        <span>&nbsp;|&nbsp;</span>
-                       <a class="giay-link-body-items" href="#A4"> Giấy Ford</a>
+                       <a class="giay-link-body-items" <a class="giay-link-body-items" href="Allsanpham.php?search=Giấy">Giấy Forb</a>
                        <span>&nbsp;|&nbsp;</span>
-                       <a class="giay-link-body-items" href="#A4"> Giấy Couche</a>
+                       <a class="giay-link-body-items" <a class="giay-link-body-items" href="Allsanpham.php?search=Giấy">Giấy Courche</a>
                    </div>
                     <div class="X08">
-                        <a href="#giay" class="giay-link-header">
-                           SỔ TAY
+                        <a class="giay-link-header" href="Allsanpham.php?search=Sổ tay">
+                            SỔ TAY
                         </a>
                     </div>
                     <div class="giay-link-body">
-                        <a class="giay-link-body-items" href="#A4">Sổ tay bìa giấy cứng</a>
+                        <a class="giay-link-body-items" <a class="giay-link-body-items" href="Allsanpham.php?search=Sổ tay">Sổ tay bìa giấy cứng</a>
                         <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Sổ tay bìa da thật</a>
+                        <a class="giay-link-body-items" <a class="giay-link-body-items" href="Allsanpham.php?search=Sổ tay da thật">Sổ tay bìa da thật</a>
                         <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Sổ tay bìa giả da</a>
+                        <a class="giay-link-body-items" <a class="giay-link-body-items" href="Allsanpham.php?search=Sổ tay giả da">Sổ tay giả da</a>
                     </div>
                 </div>
                 <div>
                     <div class="X07">
-                        <a href="#giay" class="giay-link-header">
-                           GHẾ VĂN PHÒNG
+                        <a class="giay-link-header" href="Allsanpham.php?search=GHẾ VĂN PHÒNG">
+                            GHẾ VĂN PHÒNG
                         </a>
                     </div>
                     <div class="giay-link-body">
-                        <a class="giay-link-body-items" href="#A4">Ghế gấp văn phòng</a>
+                        <a class="giay-link-body-items" <a class="giay-link-body-items" href="Allsanpham.php?search=Ghế gấp">Ghế gấp văn phòng</a>
                         <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Sofa</a>
+                        <a class="giay-link-body-items" href="Allsanpham.php?search=Sofa">Sofa</a>
                         <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Ghế văn phòng chân quỳ</a>
+                        <a class="giay-link-body-items" href="Allsanpham.php?search=Ghế văn phòng chân quỳ">Ghế văn phòng chân quỳ</a>
                         <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Ghế xoay có gác chân</a>p
+                        <a class="giay-link-body-items" href="Allsanpham.php?search=Ghế xoay có gác chân">Ghế xoay có gác chân</a>p
                     </div>
                     <div class="X08">
-                        <a href="#giay" class="giay-link-header">
-                            HỒ SƠ
+                        <a class="giay-link-header" href="Allsanpham.php?search=HỒ SƠ">
+                           HỒ SƠ
                         </a>
                     </div>
                     <div class="giay-link-body">
-                        <a class="giay-link-body-items" href="#A4">Hồ sơ, tài liệu hành chính văn phòng</a>
+                        <a class="giay-link-body-items" href="Allsanpham.php?search=tài liệu">Hồ sơ, tài liệu hành chính văn phòng</a>
                         <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Bìa Nút</a>
+                        <a class="giay-link-body-items" href="Allsanpham.php?search=Bìa">Bìa Nút</a>
                         <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Hồ sơ học sinh, sinh viên</a>
+                        <a class="giay-link-body-items" href="Allsanpham.php?search=Tài  liệu">Hồ sơ học sinh, sinh viên</a>
                         <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Tệp hồ sơ</a>
+                        <a class="giay-link-body-items" href="Allsanpham.php?search=tài liệu">Tệp hồ sơ</a>
                     </div>
                 </div>
                 <div>
                     <div class="X07">
-                        <a href="#giay" class="giay-link-header">
+                        <a class="giay-link-header" href="Allsanpham.php?search=KỆ">
                            KỆ & GIÁ ĐỂ ĐỒ
                         </a>
                     </div>
                     <div class="giay-link-body">
-                        <a class="giay-link-body-items" href="#A4">Giỏ lưới Comix</a>
+                        <a class="giay-link-body-items" href="Allsanpham.php?search=Giỏ">Giỏ lưới Comix</a>
                         <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Giỏ đồ đa năng</a>
+                        <a class="giay-link-body-items" href="Allsanpham.php?search=Giỏ">Giỏ đồ đa năng</a>
                         <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Giỏ việt nhật</a>
+                        <a class="giay-link-body-items" href="Allsanpham.php?search=Giỏ">Giỏ việt nhật</a>
                     </div>
                 </div>
                 <div>
                     <div class="X07">
-                        <a href="#giay" class="giay-link-header">
+                        <a class="giay-link-header" href="Allsanpham.php?search=Balo Cặp">
                            BALO & CẶP
                         </a>
                     </div>
                     <div class="giay-link-body">
-                        <a class="giay-link-body-items" href="#A4">Balo laptop</a>
+                        <a class="giay-link-body-items" href="Allsanpham.php?search=Balo">Balo laptop</a>
                         <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Balo Chống Sốc</a>
+                        <a class="giay-link-body-items" href="Allsanpham.php?search=Balo">Balo Chống Sốc</a>
                         <span>&nbsp;|&nbsp;</span>
-                        <a class="giay-link-body-items" href="#A4">Balo thời trang</a>
+                        <a class="giay-link-body-items" href="Allsanpham.php?search=Balo">Balo thời trang</a>
 
                     </div>
                 </div>
