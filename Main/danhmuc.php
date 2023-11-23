@@ -78,7 +78,7 @@
                         <div class="_text-items">Máy tính</div>
                     </div>
                 </a>
-                <a class="_link-items" href="index.php?search=balo' OR 'cặp">
+                <a class="_link-items" href="index.php?search=balo">
                     <div class="_btn_items"><div class="_items">
                             <img class="_danhMuc-items" src="picture/balo.png"/>
                         </div>
