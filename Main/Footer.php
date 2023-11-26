@@ -7,7 +7,6 @@
         $search = $_GET['search'];
     }
 ?>
-?>
 <footer class="hntp">
     <div class="inf-text">
         <div class="inf-basic">
