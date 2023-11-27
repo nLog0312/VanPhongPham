@@ -103,25 +103,6 @@
                         <button type="submit" class="gui-y-kien">Gửi ý kiến đóng góp</button>
                     </div>
                 </form>
-                <script>
-                    function validateFeedback() {
-                        var feedback = document.getElementById("feedback").value;
-                        var errorMessage = document.getElementById("error-message");
-                        var successMessage = document.getElementById("success-message");
-
-                        if (feedback.trim() === "") {
-                            errorMessage.textContent = "Hãy nhập ý kiến của bạn trước khi gửi!";
-                            errorMessage.style.display = "block";
-                            successMessage.style.display = "none";
-                        } else {
-                            errorMessage.style.display = "none";
-                            successMessage.textContent = "Cảm ơn bạn đã gửi ý kiến";
-                            successMessage.style.display = "block";
-                            // Đoạn code sau này có thể sử dụng để gửi dữ liệu đến máy chủ hoặc xử lý ý kiến đóng góp
-                            // Ví dụ: gửiAjax(feedback);
-                        }
-                    }
-                </script>
         <div class="footer-hotro">
             <div class="inf-footer-hotro">
                 <div class="inf-title-footer">
